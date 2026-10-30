@@ -1,0 +1,153 @@
+"use client";
+
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { ArrowRight, ArrowDownRight } from "lucide-react";
+import { RevealLines } from "@/components/motion/Reveal";
+import { FidelityMark } from "@/components/brand/Logo";
+import { Button } from "@/components/ui/Button";
+
+const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false });
+
+const ease = [0.16, 1, 0.3, 1] as const;
+
+function canUse3D() {
+  if (typeof window === "undefined") return false;
+  if (!window.matchMedia("(min-width: 1024px)").matches) return false;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
+  const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+  if (conn?.saveData) return false;
+  try {
+    const c = document.createElement("canvas");
+    return !!(c.getContext("webgl2") || c.getContext("webgl"));
+  } catch {
+    return false;
+  }
+}
+
+export function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const [use3D, setUse3D] = useState(false);
+  const [sceneReady, setSceneReady] = useState(false);
+
+  useEffect(() => {
+    setUse3D(canUse3D());
+  }, []);
+
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const textY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -120]);
+  const fade = useTransform(scrollYProgress, [0, 0.7], [1, reduce ? 1 : 0]);
+  const sceneY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 160]);
+
+  return (
+    <section
+      ref={ref}
+      className="grain relative flex min-h-[100svh] flex-col overflow-hidden bg-obsidian text-bone"
+      aria-labelledby="hero-title"
+    >
+      {/* Visual layer */}
+      <motion.div style={{ y: sceneY }} className="absolute inset-0">
+        {/* Static composition: always rendered first, kept on mobile / reduced motion */}
+        <motion.div
+          className="absolute inset-0 blueprint text-bone/60"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: sceneReady ? 0 : 1 }}
+          transition={{ duration: 1.2 }}
+        >
+          <motion.div
+            className="absolute right-[-18%] top-[18%] w-[95%] text-bone/[0.07] sm:right-[-6%] sm:w-[70%] lg:right-[4%] lg:top-[14%] lg:w-[46%]"
+            initial={reduce ? false : { clipPath: "inset(100% 0 0 0)" }}
+            animate={{ clipPath: "inset(0% 0 0 0)" }}
+            transition={{ duration: 1.8, ease: [0.65, 0, 0.35, 1], delay: 0.2 }}
+          >
+            <FidelityMark className="h-auto w-full" />
+          </motion.div>
+        </motion.div>
+        {use3D && (
+          <motion.div
+            className="absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: sceneReady ? 1 : 0 }}
+            transition={{ duration: 1.4, ease }}
+          >
+            <HeroScene onReady={() => setSceneReady(true)} />
+          </motion.div>
+        )}
+        {/* readability gradient for the text column */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/70 to-transparent lg:via-obsidian/30" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-obsidian to-transparent" />
+      </motion.div>
+
+      {/* Content */}
+      <motion.div
+        style={{ y: textY, opacity: fade }}
+        className="container-x relative z-10 flex flex-1 flex-col justify-end pb-16 pt-[calc(var(--header-h)+2.5rem)] sm:pb-20"
+      >
+        <motion.p
+          className="eyebrow mb-8 flex items-center gap-3 text-champagne-soft"
+          initial={reduce ? false : { opacity: 0, x: -16 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease, delay: 0.15 }}
+        >
+          <span className="h-px w-10 bg-champagne" aria-hidden="true" />
+          From Thought to Empire
+        </motion.p>
+
+        <RevealLines
+          as="h1"
+          id="hero-title"
+          animateOnMount
+          delay={0.25}
+          className="display-xl max-w-[14ch]"
+          lines={[
+            "We turn",
+            <>
+              vision <span className="font-serif font-normal normal-case italic tracking-[-0.02em] text-champagne-soft">into</span>
+            </>,
+            "landmarks.",
+          ]}
+        />
+
+        <div className="mt-10 flex max-w-xl flex-col gap-8">
+          <motion.p
+            className="lede max-w-md text-bone/70"
+            initial={reduce ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease, delay: 0.75 }}
+          >
+            Architecture, engineering, interiors, furniture, and creative solutions shaped by precision, craftsmanship, and
+            purpose.
+          </motion.p>
+          <motion.div
+            className="flex flex-col gap-3 sm:flex-row"
+            initial={reduce ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease, delay: 0.9 }}
+          >
+            <Button href="/contact" variant="light" size="lg" icon={<ArrowRight className="h-4 w-4" />}>
+              Start a Project
+            </Button>
+            <Button href="/projects" variant="outline-light" size="lg" icon={<ArrowDownRight className="h-4 w-4" />}>
+              Explore Our Work
+            </Button>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      {/* Bottom rail */}
+      <div className="container-x relative z-10 flex items-center justify-between border-t border-bone/10 py-5 text-bone/50">
+        <p className="eyebrow">Wolaita Sodo · Ethiopia</p>
+        <Link href="#group" className="eyebrow flex items-center gap-3 hover:text-bone" aria-label="Scroll to introduction">
+          <span className="hidden sm:inline">Scroll</span>
+          <span className="relative block h-8 w-px overflow-hidden bg-bone/15" aria-hidden="true">
+            <span className="absolute inset-x-0 top-0 h-1/2 bg-champagne [animation:scroll-cue_2.4s_var(--ease-arch)_infinite]" />
+          </span>
+        </Link>
+        <p className="eyebrow hidden md:block">Architecture · Interiors · Print</p>
+      </div>
+    </section>
+  );
+}
