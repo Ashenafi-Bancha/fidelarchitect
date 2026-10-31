@@ -13,7 +13,7 @@
 
 import type { DivisionSlug, Visual } from "./divisions";
 
-export type ProjectCategory = "Architecture" | "Engineering" | "Interior Design" | "Furniture" | "Printing & Advertising";
+export type ProjectCategory = "Architecture" | "Engineering" | "Interior Design" | "Furniture" | "Branding & Advertising";
 
 export interface ProjectImage {
   src: string;
@@ -28,6 +28,8 @@ export interface Project {
   slug: string;
   title: string;
   division: DivisionSlug;
+  /** Other Fidelity divisions that worked on the project */
+  alsoBy?: DivisionSlug[];
   categories: ProjectCategory[];
   location: string;
   typology: string;
@@ -46,9 +48,69 @@ export interface Project {
   verified: boolean;
   /** Notes shown on unverified projects so the gaps are visible. */
   pendingNote?: string;
+  /** Where the published facts come from (Fidelity's own posts). */
+  sources?: { label: string; href: string }[];
 }
 
 export const projects: Project[] = [
+  {
+    slug: "dicha-boys-sneakers",
+    title: "Dicha Boys Sneakers",
+    division: "branding",
+    alsoBy: ["architecture"],
+    categories: ["Branding & Advertising", "Interior Design"],
+    location: "Wolaita Sodo, Ethiopia",
+    typology: "Retail · Brand identity & shop interior",
+    status: "Designed · September 2026",
+    client: "Adonai Birhane (Mada)",
+    summary:
+      "Visual branding, logo design and shop-interior design for Dicha Boys Sneakers, a sneaker store in Wolaita Sodo — one client served by two Fidelity divisions.",
+    overview:
+      "Fidelity Branding & Advertising created the visual identity and logo for Dicha Boys Sneakers, a sneaker business in Wolaita Sodo. Fidelity Architects & Consulting Engineers designed the interior of its shop, located opposite Ligaba School.",
+    scope: [
+      "Visual branding and logo design — Fidelity Branding & Advertising",
+      "Shop interior design — Fidelity Architects & Consulting Engineers",
+    ],
+    challenge:
+      "The logo had to say several things at once: what the business sells, the meaning of its name, where it comes from, that it can grow, and the mindset of the people who run it — a brand “for the hustlers”.",
+    approach:
+      "The identity was built around five messages: business type, nomenclature, origin, scalability and the owners’ mentality. The shop interior was then designed as the physical home of that brand.",
+    facts: [
+      { label: "Client", value: "Adonai Birhane (Mada)" },
+      { label: "Address", value: "Opposite Ligaba School, Wolaita Sodo" },
+      { label: "Brand line", value: "For the hustlers!" },
+    ],
+    images: [],
+    visual: "signage",
+    featured: true,
+    verified: true,
+    sources: [
+      { label: "Branding post — Fidelity Branding & Advertising", href: "https://www.facebook.com/profile.php?id=100083378468847" },
+      { label: "Interior post — Fidelity Architects & Consulting Engineers", href: "https://www.facebook.com/FidelityArchitects" },
+    ],
+  },
+  {
+    slug: "neon-light-signage-wolaita-sodo",
+    title: "Neon Light Signage",
+    division: "branding",
+    categories: ["Branding & Advertising"],
+    location: "Wolaita Sodo, Ethiopia",
+    typology: "Signage · Neon light works",
+    status: "Published · October 2026",
+    client: null,
+    summary: "Neon light signage works produced by Fidelity Branding & Advertising in Wolaita Sodo.",
+    overview:
+      "Neon light works by Fidelity Branding & Advertising in Wolaita Sodo, shared by the company in October 2026. Neon signage keeps a shopfront visible after dark.",
+    scope: ["Design and production of neon light signage — Fidelity Branding & Advertising"],
+    challenge: null,
+    approach: null,
+    facts: [{ label: "Service", value: "Neon light signage" }],
+    images: [],
+    visual: "signage",
+    featured: false,
+    verified: true,
+    sources: [{ label: "Neon works post — Fidel Gebremedhin with Fidelity Branding & Advertising", href: "https://www.facebook.com/Timberfresh" }],
+  },
   {
     slug: "alex-hotel",
     title: "Alex Hotel",
@@ -83,7 +145,7 @@ export const allCategories: ProjectCategory[] = [
   "Engineering",
   "Interior Design",
   "Furniture",
-  "Printing & Advertising",
+  "Branding & Advertising",
 ];
 
 export async function getProjects() {

@@ -43,7 +43,7 @@ const SAW = sawTeeth();
 
 export function DivisionMark({ division, className, mono }: { division: DivisionSlug; className?: string; /** single-colour version, e.g. on a coloured panel */ mono?: string }) {
   const color =
-    mono ?? (division === "architecture" ? "var(--color-arch)" : division === "printing" ? "var(--color-print)" : "var(--color-interior)");
+    mono ?? (division === "architecture" ? "var(--color-arch)" : division === "branding" ? "var(--color-print)" : "var(--color-interior)");
   return (
     <svg viewBox="0 0 48 48" className={className} aria-hidden="true" focusable="false">
       <path d={MARK_LEFT} fill={color} />
@@ -60,7 +60,7 @@ export function DivisionMark({ division, className, mono }: { division: Division
           ))}
         </g>
       )}
-      {division === "printing" && (
+      {division === "branding" && (
         <g>
           {/* roller + printed sheet with folded corner */}
           <rect x="23.5" y="1" width="3" height="46" fill="none" stroke="currentColor" strokeWidth="1.2" />

@@ -139,14 +139,14 @@ export function Hero() {
 
       {/* Bottom rail */}
       <div className="container-x relative z-10 flex items-center justify-between border-t border-bone/10 py-5 text-bone/50">
-        <p className="eyebrow">Wolaita Sodo · Ethiopia</p>
+        <p className="eyebrow">Addis Ababa · Wolaita Sodo</p>
         <Link href="#group" className="eyebrow flex items-center gap-3 hover:text-bone" aria-label="Scroll to introduction">
           <span className="hidden sm:inline">Scroll</span>
           <span className="relative block h-8 w-px overflow-hidden bg-bone/15" aria-hidden="true">
             <span className="absolute inset-x-0 top-0 h-1/2 bg-champagne [animation:scroll-cue_2.4s_var(--ease-arch)_infinite]" />
           </span>
         </Link>
-        <p className="eyebrow hidden md:block">Architecture · Interiors · Print</p>
+        <p className="eyebrow hidden md:block">Architecture · Interiors · Branding</p>
       </div>
     </section>
   );

@@ -41,6 +41,12 @@ export function organizationJsonLd() {
       addressCountry: site.location.countryCode,
     },
     areaServed: { "@type": "Country", name: "Ethiopia" },
+    founder: { "@type": "Person", name: site.founder.name, jobTitle: "Architect, Founder & CEO" },
+    department: [
+      { "@type": "Organization", name: "Fidelity Architects & Consulting Engineers", slogan: "Building a legacy!", url: "https://www.facebook.com/FidelityArchitects" },
+      { "@type": "Organization", name: "Fidelity Furniture & Interior Design", slogan: "For elegant spaces!" },
+      { "@type": "Organization", name: "Fidelity Branding & Advertising", slogan: "Stand out!" },
+    ],
     ...(site.contact.phone ? { telephone: site.contact.phone } : {}),
     ...(site.contact.email ? { email: site.contact.email } : {}),
     ...(sameAs.length ? { sameAs } : {}),

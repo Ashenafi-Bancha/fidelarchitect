@@ -2,13 +2,15 @@ import { Mail, MapPin, MessageCircle, Phone, Clock, ArrowUpRight } from "lucide-
 import { PageHero } from "@/components/sections/PageHero";
 import { InquiryForm } from "@/components/forms/InquiryForm";
 import { SectionLabel } from "@/components/ui/Button";
-import { site, mapsDirectionsUrl, telUrl, whatsappUrl, locationLabel } from "@/content/site";
+import { site, mapsDirectionsUrl, telUrl, whatsappUrl } from "@/content/site";
+import { divisions } from "@/content/divisions";
+import { DivisionMark } from "@/components/brand/Logo";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Contact & Project Inquiry",
   description:
-    "Start a project with Fidelity Business Group in Wolaita Sodo, Ethiopia — architecture, engineering, interiors, furniture, printing and advertising.",
+    "Start a project with Fidelity Business Group — call 0911 97 18 00. Architecture, construction, interiors, furniture, branding, printing and signage in Addis Ababa and Wolaita Sodo.",
   path: "/contact",
 });
 
@@ -68,14 +70,18 @@ export default function ContactPage() {
                     <a href={`mailto:${site.contact.email}`} className="link-line break-all text-lg">{site.contact.email}</a>
                   </ContactRow>
                 )}
-                <ContactRow icon={<MapPin className="h-4 w-4" />} label="Office">
-                  <p className="text-lg">
-                    {site.location.address && <>{site.location.address}<br /></>}
-                    {locationLabel}
-                  </p>
-                  <a href={mapsDirectionsUrl} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-2 text-sm text-bone/60 hover:text-bone">
-                    Directions in Google Maps <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </a>
+                <ContactRow icon={<MapPin className="h-4 w-4" />} label="Offices">
+                  {site.location.address && <p className="text-lg">{site.location.address}</p>}
+                  <ul className="space-y-2">
+                    {site.location.offices.map((o) => (
+                      <li key={o} className="flex flex-wrap items-baseline justify-between gap-x-4">
+                        <span className="text-lg">{o}</span>
+                        <a href={mapsDirectionsUrl(o)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm text-bone/60 hover:text-bone">
+                          Map <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </ContactRow>
                 {site.contact.hours && (
                   <ContactRow icon={<Clock className="h-4 w-4" />} label="Business hours">
@@ -89,15 +95,36 @@ export default function ContactPage() {
                   reach the team in the meantime.
                 </p>
               )}
-              {site.social.length > 0 && (
-                <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-xs uppercase tracking-[0.14em] text-bone/60">
+              <div className="mt-12">
+                <p className="eyebrow text-bone/40">Follow our work</p>
+                <ul className="mt-5 divide-y divide-bone/10 border-y border-bone/10 text-sm">
                   {site.social.map((s) => (
-                    <li key={s.label}>
-                      <a href={s.href} target="_blank" rel="noopener noreferrer" className="link-line hover:text-bone">{s.label}</a>
+                    <li key={s.href}>
+                      <a href={s.href} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between gap-4 py-3 hover:text-bone">
+                        <span>
+                          <span className="text-bone/90">{s.label}</span>
+                          {s.detail && <span className="ml-2 text-bone/45">{s.detail}</span>}
+                        </span>
+                        <ArrowUpRight className="h-4 w-4 text-bone/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                      </a>
                     </li>
                   ))}
+                  {divisions.flatMap((d) =>
+                    d.social.filter((s) => !site.social.some((g) => g.href === s.href)).map((s) => (
+                      <li key={s.href}>
+                        <a href={s.href} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between gap-4 py-3 hover:text-bone">
+                          <span className="flex items-center gap-3">
+                            <DivisionMark division={d.slug} className="h-5 w-5 text-bone" />
+                            <span className="text-bone/90">{s.label}</span>
+                            <span className="text-bone/45">{d.shortName}</span>
+                          </span>
+                          <ArrowUpRight className="h-4 w-4 text-bone/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                        </a>
+                      </li>
+                    )),
+                  )}
                 </ul>
-              )}
+              </div>
               <p className="mt-16 font-serif text-3xl italic text-champagne-soft">From Thought to Empire.</p>
             </div>
           </aside>

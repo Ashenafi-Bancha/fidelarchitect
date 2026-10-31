@@ -7,38 +7,35 @@ The site is built so that **nothing unverified is presented as fact**. Every ite
 - [ ] Confirm exact brand colours (HEX/CMYK). Current values were sampled from the logo images: red `#c8222a`, yellow `#e5bf00`, green `#1f5c3d` (`app/globals.css`).
 - [ ] Confirm brand typeface, if one is specified in the brand guidelines.
 
-## 2. Contact details (set in `.env` — see `.env.example`)
-Each item stays hidden on the site until it is set.
-- [ ] Main phone number → `NEXT_PUBLIC_CONTACT_PHONE`
-- [ ] WhatsApp business number → `NEXT_PUBLIC_CONTACT_WHATSAPP`
-- [ ] Email address → `NEXT_PUBLIC_CONTACT_EMAIL`
-- [ ] Street address / building in Wolaita Sodo → `NEXT_PUBLIC_OFFICE_ADDRESS`
-- [ ] Business hours → `NEXT_PUBLIC_BUSINESS_HOURS`
-- [ ] Social media URLs (Facebook, Instagram, LinkedIn, Telegram, TikTok)
+## 2. Contact details — verified 31 Oct 2026 from Fidelity's public pages
+- [x] Phone: **0911 97 18 00** (group page, all division pages, both TikTok accounts)
+- [x] Email: **fidelityarchitects@gmail.com** (Architects page). Is there a group-wide email?
+- [x] Offices: **Addis Ababa** and **Wolaita Sodo** (Architects page). The group page lists Addis Ababa as its address.
+- [x] Social: group Facebook, the three division Facebook pages, TikTok @fidelity_architects; founder's Facebook and TikTok
+- [ ] **Which city is headquarters?** The original brief said Wolaita Sodo, but the group's Facebook page lists Addis Ababa. The site shows both offices equally until this is confirmed.
+- [ ] Street addresses for each office → `NEXT_PUBLIC_OFFICE_ADDRESS`
+- [ ] Is 0911 97 18 00 also on WhatsApp? If so set `NEXT_PUBLIC_CONTACT_WHATSAPP=251911971800`. (Not shown until confirmed.)
+- [ ] Business hours. The Facebook page says "Always open", which looks like a default setting, so it isn't shown.
 
-## 3. Company information (About page)
-- [ ] Confirm the service list for each division (`content/divisions.ts`, `servicesConfirmed`)
-- [ ] Is metalwork / steel fabrication an active service? If so, which services exist and under which division? (Not shown on the site yet.)
+## 3. Company information
+- [x] Divisions and official taglines (founder's pinned post, 31 Aug 2026):
+  Group: *From thought to Empire!* · Architects: *Building a legacy!* · Furniture & Interior: *For elegant spaces!* · Branding & Advertising: *Stand out!*
+- [x] **The third division is now "Fidelity Branding & Advertising".** The older logo image says "Printing & Advertising". The site uses the current name, and `/divisions/printing` redirects to `/divisions/branding`.
+- [x] Architects services: architectural design, supervision, construction ("from design up to construction")
+- [x] Furniture & Interior: architect-designed furniture and interiors, on-time delivery promise, repair & upholstery, **metalwork** (Oct 2026 post)
+- [x] Branding & Advertising: branding, graphic design, printing, signs & banners, neon light signage
+- [x] Founder & CEO: **Fidel Gebremedhin**, architect. CEO of the group, founder and CEO of the Architects, Creative Director of Furniture & Interior, General Manager of Branding & Advertising, lecturer at Wolaita Sodo University, studied at EiABC. Please confirm he is happy with this on the About page and send a portrait photo.
 - [ ] Mission and vision statements
-- [ ] Core values (the About page shows "approach" principles, not official values)
-- [ ] Founding year and verified milestones (no history is shown yet)
-- [ ] Current number of permanent staff (brief says "more than 25", not published yet)
-- [ ] Leadership/team names, roles and photos, with permission
-- [ ] Any licences, registrations or certifications that can be published
+- [ ] Founding year and milestones
+- [ ] Current number of permanent staff
+- [ ] Other team members to feature
 
 ## 4. Portfolio (`content/projects.ts`)
-**Alex Hotel (B+G+7, Wolaita Sodo)** — currently published with a "Details pending" notice and excluded from search engines:
-- [ ] Fidelity's exact scope of work (architecture? structural? both?)
-- [ ] Project status (design / under construction / completed) and year
-- [ ] Owner's permission to publish and to name the client
-- [ ] Approved renders, drawings and/or photographs
-- [ ] Short overview, design challenge and design approach
-- Then set `verified: true`.
-
-Further projects for each division:
-- [ ] Architecture & engineering projects
-- [ ] Interior design and custom furniture projects (photography)
-- [ ] Printing & advertising samples (photos of printed work, signage)
+- [x] **Dicha Boys Sneakers**, Wolaita Sodo. Logo and visual branding (Branding & Advertising) plus shop interior design (Architects). Client Adonai Birhane (Mada), as named in Fidelity's own posts. Published as verified.
+- [x] **Neon light signage**, Wolaita Sodo (Oct 2026 post). Published as verified, with minimal detail.
+- [ ] Photos for both projects. They are on Facebook; I have not downloaded them. Please send the original files, or confirm that I can use the Facebook images.
+- [ ] **Alex Hotel** (B+G+7) is still marked "Details pending" and excluded from search engines until scope, status and permission are confirmed.
+- [ ] More projects for each division. Facebook only shows a few recent posts without signing in, so older work couldn't be reviewed.
 
 ## 5. Photography
 - [ ] Office and team photos

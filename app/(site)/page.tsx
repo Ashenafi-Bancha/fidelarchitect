@@ -13,9 +13,9 @@ import { images } from "@/content/imagery";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: { absolute: `${site.name} — Architecture, Interiors & Printing in Wolaita Sodo` },
+  title: { absolute: `${site.name} — Architecture, Interiors & Branding in Ethiopia` },
   description:
-    "Fidelity Business Group, Wolaita Sodo: architectural design and structural engineering, furniture and interior design, and printing and advertising. From Thought to Empire.",
+    "Fidelity Business Group, Addis Ababa and Wolaita Sodo: architectural design, supervision and construction; furniture and interior design; branding, printing and signage. From Thought to Empire.",
   alternates: { canonical: "/" },
 };
 

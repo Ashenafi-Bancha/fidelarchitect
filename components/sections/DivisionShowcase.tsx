@@ -69,7 +69,7 @@ export function DivisionShowcase() {
                         {d.shortName}
                       </h3>
                       <p id={`div-${d.slug}-desc`} className="mt-4 max-w-md text-sm leading-relaxed text-obsidian/65">
-                        {d.tagline}
+                        <span className="font-serif text-base italic text-obsidian">{d.slogan}</span> {d.tagline}
                       </p>
                       {/* mobile visual */}
                       <div className="mt-6 lg:hidden">

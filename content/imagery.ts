@@ -51,5 +51,5 @@ export type ImageKey = keyof typeof images;
 export const divisionImagery = {
   architecture: { hero: images.archHouseDusk, secondary: images.archDrafting, detail: images.archFacadeWhite },
   interiors: { hero: images.intLivingWarm, secondary: images.intCabinet, detail: images.intDiningGreen },
-  printing: { hero: images.printColour, secondary: images.printType, detail: images.printPaper },
+  branding: { hero: images.printColour, secondary: images.printType, detail: images.printPaper },
 } as const;

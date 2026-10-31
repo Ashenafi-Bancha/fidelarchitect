@@ -10,7 +10,7 @@ import { buttonClass } from "@/components/ui/Button";
 export const metadata = pageMetadata({
   title: "Projects",
   description:
-    "Selected architecture, engineering, interior, furniture and print projects by Fidelity Business Group in Wolaita Sodo, Ethiopia.",
+    "Selected architecture, interior, furniture and branding projects by Fidelity Business Group in Ethiopia.",
   path: "/projects",
 });
 

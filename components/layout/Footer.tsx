@@ -52,7 +52,7 @@ export function Footer() {
           </div>
           <p className="mt-6 font-serif text-2xl italic text-champagne-soft">From Thought to Empire.</p>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-bone/60">
-            A multidisciplinary group in Wolaita Sodo bringing architecture and engineering, furniture and interiors, and printing
+            An Ethiopian holding company bringing architecture and construction, furniture and interiors, and branding
             and advertising together under one roof.
           </p>
         </div>
@@ -91,13 +91,13 @@ export function Footer() {
           <ul className="space-y-4 text-sm text-bone/80">
             <li className="flex gap-3">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-champagne" aria-hidden="true" />
-              <span>
-                {site.location.address && <>{site.location.address}<br /></>}
-                {locationLabel}
-                <br />
-                <a href={mapsDirectionsUrl} target="_blank" rel="noopener noreferrer" className="link-line text-bone/55 hover:text-bone">
-                  Get directions
-                </a>
+              <span className="space-y-1">
+                {site.location.address && <span className="block">{site.location.address}</span>}
+                {site.location.offices.map((o) => (
+                  <a key={o} href={mapsDirectionsUrl(o)} target="_blank" rel="noopener noreferrer" className="link-line block w-fit hover:text-bone">
+                    {o}
+                  </a>
+                ))}
               </span>
             </li>
             {tel && (

@@ -37,7 +37,7 @@ function BusinessCardBack({ className }: { className?: string }) {
         <span className="block h-[2px] w-2/5 bg-obsidian/30" />
       </div>
       <div className="flex gap-1.5">
-        {(["architecture", "printing", "interiors"] as const).map((d) => (
+        {(["architecture", "branding", "interiors"] as const).map((d) => (
           <DivisionMark key={d} division={d} className="h-4 w-4 text-obsidian" />
         ))}
       </div>
@@ -63,11 +63,11 @@ function Letterhead({ className }: { className?: string }) {
       </div>
       <div className="mt-auto flex items-center justify-between border-t border-obsidian/15 pt-2">
         <div className="flex gap-1.5">
-          {(["architecture", "printing", "interiors"] as const).map((d) => (
+          {(["architecture", "branding", "interiors"] as const).map((d) => (
             <DivisionMark key={d} division={d} className="h-3.5 w-3.5 text-obsidian" />
           ))}
         </div>
-        <span className="text-[0.4rem] uppercase tracking-[0.2em] text-obsidian/50">Wolaita Sodo · Ethiopia</span>
+        <span className="text-[0.4rem] uppercase tracking-[0.2em] text-obsidian/50">Addis Ababa · Wolaita Sodo</span>
       </div>
     </div>
   );
@@ -81,12 +81,12 @@ function Hoarding({ className }: { className?: string }) {
         <DivisionMark division="architecture" mono="#f5f2ec" className="h-[52%] w-[52%] text-bone" />
       </div>
       <div className="absolute inset-y-0 left-[34%] right-0 flex flex-col justify-center px-[6%]">
-        <p className="text-[clamp(0.4rem,0.8vw,0.65rem)] uppercase tracking-[0.24em] text-obsidian/50">Architectural design & structural engineering</p>
+        <p className="text-[clamp(0.4rem,0.8vw,0.65rem)] uppercase tracking-[0.24em] text-obsidian/50">Architectural design · Supervision · Construction</p>
         <p className="mt-2 font-display text-[clamp(0.8rem,2vw,1.6rem)] font-semibold uppercase leading-[0.95] tracking-[-0.02em] text-obsidian">
           Fidelity Architects
           <br />& Consulting Engineers
         </p>
-        <p className="mt-3 font-serif text-[clamp(0.5rem,1vw,0.85rem)] italic text-obsidian/60">From thought to Empire!</p>
+        <p className="mt-3 font-serif text-[clamp(0.5rem,1vw,0.85rem)] italic text-obsidian/60">Building a legacy!</p>
       </div>
       {/* hoarding panel joints */}
       {[25, 50, 75].map((x) => (
@@ -100,17 +100,13 @@ function RollUp({ className }: { className?: string }) {
   return (
     <div className={cn("flex flex-col items-center", className)}>
       <div className="flex aspect-[85/200] w-full flex-col justify-between bg-print p-[10%] text-obsidian shadow-[0_50px_80px_-40px_rgba(0,0,0,0.8)]">
-        <DivisionMark division="printing" mono="#0b0b0c" className="h-10 w-10 text-obsidian" />
+        <DivisionMark division="branding" mono="#0b0b0c" className="h-10 w-10 text-obsidian" />
         <p className="font-display text-[clamp(0.75rem,1.6vw,1.35rem)] font-semibold uppercase leading-[0.95] tracking-[-0.02em]">
-          Print
+          Stand
           <br />
-          that
-          <br />
-          gets
-          <br />
-          seen.
+          out!
         </p>
-        <p className="text-[0.45rem] uppercase tracking-[0.2em]">Fidelity Printing & Advertising</p>
+        <p className="text-[0.45rem] uppercase tracking-[0.2em]">Fidelity Branding & Advertising</p>
       </div>
       <div className="h-2 w-[110%] bg-[#2a2a2d]" />
     </div>
@@ -152,10 +148,10 @@ export function BrandApplications({ index }: { index?: string }) {
           <Reveal className="lg:col-span-4 lg:col-start-9">
             <p className="leading-relaxed text-bone/65">
               Cards, letterheads, envelopes, banners and site hoardings — the same identity carried consistently across every surface.
-              This is the work of our printing and advertising division, shown here on Fidelity&apos;s own brand.
+              This is the work of Fidelity Branding &amp; Advertising — shown here on Fidelity&apos;s own brand. Its line says it best: <em className="font-serif not-italic text-print">Stand out!</em>
             </p>
-            <Link href="/divisions/printing" className="group mt-8 inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.14em]">
-              <span className="link-line">Explore Printing</span>
+            <Link href="/divisions/branding" className="group mt-8 inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.14em]">
+              <span className="link-line">Explore Branding</span>
               <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
             </Link>
           </Reveal>

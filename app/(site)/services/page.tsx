@@ -10,7 +10,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Services",
   description:
-    "Architectural design, structural engineering, interior design, custom furniture, commercial printing, large-format printing and signage from Fidelity Business Group, Wolaita Sodo.",
+    "Architectural design, supervision and construction, interior design, custom furniture, upholstery, metalwork, logo design, printing, signs and neon signage from Fidelity Business Group.",
   path: "/services",
 });
 

@@ -48,7 +48,7 @@ export async function FeaturedWork({ index = "03" }: { index?: string }) {
                 <div className="border border-dashed border-bone/15 p-8">
                   <p className="font-display text-xl font-semibold uppercase tracking-tight">More work is being prepared</p>
                   <p className="mt-3 text-sm leading-relaxed text-bone/55">
-                    Further architecture, interior and print projects will be published here once photography and client approvals
+                    Further architecture, interior and branding projects will be published here once photography and client approvals
                     are in place.
                   </p>
                 </div>

@@ -7,7 +7,7 @@
  * no claims about results, awards or credentials.
  */
 
-export type DivisionSlug = "architecture" | "interiors" | "printing";
+export type DivisionSlug = "architecture" | "interiors" | "branding";
 export type Visual = "elevation" | "plan" | "section" | "interior" | "joinery" | "print" | "signage";
 
 export interface Division {
@@ -18,6 +18,8 @@ export interface Division {
   index: string;
   color: string; // CSS variable
   cta: string;
+  /** Official division slogan */
+  slogan: string;
   tagline: string;
   intro: string;
   audience: string[];
@@ -26,6 +28,9 @@ export interface Division {
   projectTypes: string[];
   visuals: Visual[];
   faqs: { q: string; a: string }[];
+  /** Services stated on the division's own public pages */
+  confirmed: string[];
+  social: { label: string; href: string }[];
   servicesConfirmed: boolean;
   seo: { title: string; description: string };
 }
@@ -62,9 +67,10 @@ export const divisions: Division[] = [
     index: "A",
     color: "var(--color-arch)",
     cta: "Explore Architecture",
-    tagline: "Buildings conceived with clarity and engineered to stand.",
+    slogan: "Building a legacy!",
+    tagline: "From design up to construction.",
     intro:
-      "From a family home to a multi-storey hotel, our architects and engineers carry a project from first sketch to construction-ready documents — designing spaces that work, structures that are sound, and buildings that give their streets something to be proud of.",
+      "Architectural design, supervision and construction from one team. From a family home to a multi-storey hotel, our architects and engineers carry a project from the first sketch through to the finished building — with offices in Addis Ababa and Wolaita Sodo.",
     audience: [
       "Families planning a new home or an extension",
       "Developers of apartment, commercial and mixed-use buildings",
@@ -88,6 +94,8 @@ export const divisions: Division[] = [
     ],
     services: [
       { title: "Architectural design", body: "Concept, design development and documentation for new buildings." },
+      { title: "Construction supervision", body: "Site supervision so the building is built the way it was designed." },
+      { title: "Construction", body: "Delivery from design up to construction, through one accountable team." },
       { title: "Residential houses", body: "Homes planned around the way a family actually lives." },
       { title: "Commercial buildings", body: "Shops, offices and commercial frontages designed for use and visibility." },
       { title: "Hotels & hospitality", body: "Guest-focused planning, circulation and facade design for hospitality." },
@@ -98,8 +106,13 @@ export const divisions: Division[] = [
       { title: "3D architectural visualisation", body: "Renders and models that communicate design intent." },
       { title: "Interior & exterior spatial planning", body: "Layouts that connect inside and outside spaces." },
     ],
-    projectTypes: ["Private residences", "Hotels", "Apartment blocks", "Mixed-use buildings", "Commercial buildings", "Institutional buildings"],
+    projectTypes: ["Private residences", "Hotels", "Apartment blocks", "Mixed-use buildings", "Commercial buildings", "Shop interiors"],
     visuals: ["elevation", "plan", "section"],
+    confirmed: ["Architectural design", "Supervision", "Construction", "Interior design"],
+    social: [
+      { label: "Facebook", href: "https://www.facebook.com/FidelityArchitects" },
+      { label: "TikTok", href: "https://www.tiktok.com/@fidelity_architects" },
+    ],
     faqs: [
       {
         q: "What do I need to start a design project?",
@@ -120,9 +133,9 @@ export const divisions: Division[] = [
     ],
     servicesConfirmed: false,
     seo: {
-      title: "Architecture & Structural Engineering in Wolaita Sodo",
+      title: "Architecture, Supervision & Construction — Addis Ababa & Wolaita Sodo",
       description:
-        "Architectural design, structural engineering and engineering consultation for homes, hotels, apartments, commercial and institutional buildings in Wolaita Sodo, Ethiopia.",
+        "Architectural design, supervision and construction for homes, hotels, apartments and commercial buildings — Fidelity Architects & Consulting Engineers, Addis Ababa and Wolaita Sodo, Ethiopia.",
     },
   },
   {
@@ -133,9 +146,10 @@ export const divisions: Division[] = [
     index: "B",
     color: "var(--color-interior)",
     cta: "Explore Interiors",
-    tagline: "Interiors and furniture made for the people who use them.",
+    slogan: "For elegant spaces!",
+    tagline: "Furniture and interiors designed by architects — delivered on the agreed day.",
     intro:
-      "We design interiors and make the furniture that completes them — from a single custom piece to a fully planned home, office or hotel. Every layout begins with how a space is used; every piece is shaped by material, proportion and craftsmanship.",
+      "We design the furniture and interiors you want — drawn by architects — and make them real. From a single custom piece to a fully planned home, office or shop, every layout starts with how a space is used. Delivering on the agreed date is what sets us apart.",
     audience: [
       "Homeowners furnishing or renovating",
       "Offices planning productive workspaces",
@@ -165,9 +179,13 @@ export const divisions: Division[] = [
       { title: "Space planning", body: "Furniture layouts and circulation studies." },
       { title: "Interior finishing", body: "Decorative finishes and detailing." },
       { title: "Cabinetry & storage", body: "Built-in cabinetry, wardrobes and storage solutions." },
+      { title: "Repair & upholstery", body: "Furniture repair and re-upholstery to give good pieces a second life." },
+      { title: "Metalwork", body: "Clean, precise metal fabrication for furniture frames and fittings." },
     ],
     projectTypes: ["Homes", "Offices", "Hotel rooms & lobbies", "Restaurants & cafés", "Retail spaces"],
     visuals: ["interior", "joinery", "plan"],
+    confirmed: ["Interior design", "Furniture", "Repair & upholstery", "Metalwork"],
+    social: [{ label: "Facebook", href: "https://www.facebook.com/profile.php?id=100084991431065" }],
     faqs: [
       {
         q: "Can you make a single piece of furniture?",
@@ -186,70 +204,72 @@ export const divisions: Division[] = [
     seo: {
       title: "Interior Design & Custom Furniture in Wolaita Sodo",
       description:
-        "Residential, office and hospitality interior design with custom furniture, cabinetry and space planning by Fidelity Furniture & Interior Design, Wolaita Sodo, Ethiopia.",
+        "Architect-designed furniture and interiors, custom cabinetry, upholstery and metalwork, delivered on time — Fidelity Furniture & Interior Design, Ethiopia.",
     },
   },
   {
-    slug: "printing",
-    name: "Fidelity Printing & Advertising",
-    shortName: "Printing & Advertising",
-    discipline: "Print · Branding Materials · Large Format",
+    slug: "branding",
+    name: "Fidelity Branding & Advertising",
+    shortName: "Branding & Advertising",
+    discipline: "Branding · Graphic Design · Printing · Signage",
     index: "C",
     color: "var(--color-print)",
-    cta: "Explore Printing",
-    tagline: "Printed communication with presence.",
+    cta: "Explore Branding",
+    slogan: "Stand out!",
+    tagline: "Helping businesses stand out from the crowd.",
     intro:
-      "Business cards that feel considered, brochures that read clearly, banners that are seen from across the street. We help businesses and institutions present themselves through well-designed, well-produced print and advertising materials.",
+      "We help you stand out from the crowd and grow your business through branding, graphic design and printing. From a new logo to the neon sign above your door, we shape how your business is seen — and produce it.",
     audience: [
-      "Businesses building or refreshing their brand",
-      "Institutions and NGOs producing reports and materials",
-      "Event organisers and campaigns",
+      "New businesses that need a name, logo and identity",
       "Shops and offices that need signage",
+      "Businesses refreshing their brand",
+      "Institutions, events and campaigns",
     ],
     problems: [
       {
-        title: "A consistent brand across every material",
-        body: "Stationery, brochures and promotional pieces that look like they belong to the same organisation.",
+        title: "A brand that says what you are",
+        body: "Logos are designed around your business type, name, origin, room to grow and the mindset of the people behind it — not just how they look.",
       },
       {
-        title: "Materials ready when you need them",
-        body: "Clear proofs and agreed timelines so launches, events and campaigns are supported on time.",
+        title: "Being noticed on the street",
+        body: "Signs, banners and neon light signage that make a shopfront visible by day and by night.",
       },
       {
-        title: "Visibility at scale",
-        body: "Large-format prints and signage designed to be read at distance.",
+        title: "One identity, everywhere",
+        body: "Cards, print, signage and social media that all look like the same business.",
       },
     ],
     services: [
-      { title: "Commercial printing", body: "Everyday and specialised print production." },
-      { title: "Branding & advertising materials", body: "Materials that carry your identity consistently." },
-      { title: "Business cards & stationery", body: "Cards, letterheads, envelopes and forms." },
-      { title: "Brochures & company profiles", body: "Layout and print for brochures and profiles." },
-      { title: "Posters, banners & promotion", body: "Campaign and event materials." },
-      { title: "Large-format printing", body: "Big prints for outdoor and indoor display." },
-      { title: "Signage & visual communication", body: "Signs and wayfinding for premises." },
+      { title: "Brand identity & logo design", body: "Names, logos and visual identities built on strategy." },
+      { title: "Graphic design", body: "Layouts for print, social media and advertising." },
+      { title: "Printing", body: "Business cards, stationery, brochures and promotional print." },
+      { title: "Signs & banners", body: "Shop signs, banners and large-format display." },
+      { title: "Neon light signage", body: "Custom neon light work for shopfronts and interiors." },
+      { title: "Advertising", body: "Campaign materials that help a business grow." },
     ],
-    projectTypes: ["Brand stationery", "Company profiles", "Event materials", "Outdoor advertising", "Shop signage"],
+    projectTypes: ["Logo & brand identity", "Shop signage", "Neon signs", "Brand stationery", "Banners", "Promotional print"],
     visuals: ["print", "signage", "print"],
+    confirmed: ["Branding", "Graphic design", "Printing", "Signs & banners", "Neon signage"],
+    social: [{ label: "Facebook", href: "https://www.facebook.com/profile.php?id=100083378468847" }],
     faqs: [
       {
-        q: "Can you help with design as well as printing?",
-        a: "Tell us whether you have print-ready files or need design support, and we will advise on the right approach for your materials.",
+        q: "Can you design a logo for a new business?",
+        a: "Yes. Logo and brand identity design is a core service. We start by understanding your business, its name and where it is going.",
       },
       {
-        q: "What file formats should I send?",
-        a: "High-resolution PDF files are usually best. If you are unsure, send what you have and we will check it before production.",
+        q: "Do you make signs and neon lights?",
+        a: "Yes — shop signs, banners and neon light signage. Tell us the location and size and we will advise on options.",
       },
       {
-        q: "How quickly can you print?",
-        a: "Turnaround depends on quantity, material and finishing. Share your deadline when you contact us and we will confirm what is possible.",
+        q: "Can you print what you design?",
+        a: "Yes. Design and printing are handled by the same team, so artwork is prepared correctly for production.",
       },
     ],
-    servicesConfirmed: false,
+    servicesConfirmed: true,
     seo: {
-      title: "Printing & Advertising Services in Wolaita Sodo",
+      title: "Branding, Logo Design, Printing & Signage — Addis Ababa & Wolaita Sodo",
       description:
-        "Commercial printing, business cards, brochures, banners, large-format printing and signage by Fidelity Printing & Advertising in Wolaita Sodo, Ethiopia.",
+        "Logo and brand identity design, graphic design, printing, signs, banners and neon light signage by Fidelity Branding & Advertising, Ethiopia.",
     },
   },
 ];

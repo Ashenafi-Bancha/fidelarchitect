@@ -47,7 +47,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const [cover, ...gallery] = p.images;
 
   const facts = [
-    { label: "Division", value: division.shortName },
+    { label: p.alsoBy?.length ? "Divisions" : "Division", value: [division, ...(p.alsoBy ?? []).map((s) => getDivision(s)!)].map((x) => x.shortName).join(" + ") },
     { label: "Category", value: p.categories.join(", ") },
     { label: "Location", value: p.location },
     ...(p.status ? [{ label: "Status", value: p.status }] : []),
@@ -137,6 +137,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               )}
               {p.challenge && <TextBlock label="The challenge">{p.challenge}</TextBlock>}
               {p.approach && <TextBlock label="Design approach">{p.approach}</TextBlock>}
+              {p.sources && p.sources.length > 0 && (
+                <TextBlock label="As published by Fidelity">
+                  <ul className="space-y-2 text-base">
+                    {p.sources.map((s) => (
+                      <li key={s.href + s.label}>
+                        <a href={s.href} target="_blank" rel="noopener noreferrer" className="underline decoration-obsidian/30 underline-offset-4 hover:decoration-obsidian">
+                          {s.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </TextBlock>
+              )}
             </div>
           </div>
         </div>

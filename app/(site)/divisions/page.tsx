@@ -13,7 +13,7 @@ import { cn } from "@/lib/cn";
 export const metadata = pageMetadata({
   title: "Our Divisions",
   description:
-    "Fidelity Business Group's three divisions: Architects & Consulting Engineers, Furniture & Interior Design, and Printing & Advertising — Wolaita Sodo, Ethiopia.",
+    "Fidelity Business Group's three divisions: Architects & Consulting Engineers, Furniture & Interior Design, and Branding & Advertising — Addis Ababa and Wolaita Sodo, Ethiopia.",
   path: "/divisions",
 });
 

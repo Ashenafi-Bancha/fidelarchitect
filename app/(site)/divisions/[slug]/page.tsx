@@ -38,7 +38,7 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
   const related = (await getProjects()).filter((p) => p.division === d.slug);
   const others = divisions.filter((x) => x.slug !== d.slug);
   const imagery = divisionImagery[d.slug];
-  const bandLine = { architecture: "Designed to stand.", interiors: "Made to be lived in.", printing: "Made to be seen." }[d.slug];
+  const bandLine = { architecture: "Designed to stand.", interiors: "Made to be lived in.", branding: "Stand out." }[d.slug];
 
   const serviceLd = {
     "@context": "https://schema.org",
@@ -47,7 +47,7 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
     serviceType: d.discipline,
     description: d.intro,
     provider: { "@type": "Organization", name: site.name, url: site.url },
-    areaServed: { "@type": "City", name: "Wolaita Sodo" },
+    areaServed: [{ "@type": "City", name: "Addis Ababa" }, { "@type": "City", name: "Wolaita Sodo" }],
     url: `${site.url}/divisions/${d.slug}`,
   };
   const faqLd = {
@@ -64,13 +64,20 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
         eyebrow={`Division ${d.index} · ${d.discipline}`}
         title={d.name}
         lines={d.shortName.split(" & ").map((w, i, a) => (i < a.length - 1 ? `${w} &` : w))}
-        intro={d.intro}
+        intro={
+          <>
+            <span className="mb-5 block font-serif text-3xl italic text-bone sm:text-4xl" style={{ color: d.color === "var(--color-interior)" ? "#7fbf9b" : d.color }}>
+              {d.slogan}
+            </span>
+            {d.intro}
+          </>
+        }
         accent={d.color}
         division={d.slug}
         image={imagery.hero}
         visual={d.visuals[0]}
       >
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <Link href="#inquiry" className={buttonClass("light", "lg")}>
             Start a Project
           </Link>
@@ -79,6 +86,17 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
               See related work
             </Link>
           )}
+          {d.social.map((s) => (
+            <a
+              key={s.href}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-14 items-center gap-2 px-3 text-xs font-semibold uppercase tracking-[0.14em] text-bone/70 hover:text-bone"
+            >
+              {s.label} <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
+          ))}
         </div>
       </PageHero>
 
@@ -91,9 +109,19 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
               <h2 id="offer" className="display-md mt-8">
                 {d.tagline}
               </h2>
+              <div className="mt-8">
+                <p className="eyebrow text-obsidian/45">Core services</p>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {d.confirmed.map((c) => (
+                    <li key={c} className="border px-3 py-1.5 text-xs font-medium" style={{ borderColor: d.color }}>
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </div>
               {!d.servicesConfirmed && (
                 <p className="mt-6 border-l border-dashed border-obsidian/30 pl-4 text-xs leading-relaxed text-obsidian/50">
-                  Service list based on the company brief; final list to be confirmed by the division.
+                  Core services are as published by the division. The detailed list alongside is to be confirmed.
                 </p>
               )}
             </div>
@@ -187,7 +215,7 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
         </section>
       )}
       {d.slug === "interiors" && <MaterialsCraft showLink={false} />}
-      {d.slug === "printing" && <BrandApplications />}
+      {d.slug === "branding" && <BrandApplications />}
 
       {/* 4. How does the engagement work? */}
       <section className="bg-bone py-24 sm:py-32" aria-labelledby="process">

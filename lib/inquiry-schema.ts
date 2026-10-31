@@ -3,7 +3,7 @@ import { z } from "zod";
 export const divisionOptions = [
   { value: "architecture", label: "Architecture & Engineering" },
   { value: "interiors", label: "Furniture & Interior Design" },
-  { value: "printing", label: "Printing & Advertising" },
+  { value: "branding", label: "Branding & Advertising" },
   { value: "multiple", label: "More than one division" },
   { value: "not-sure", label: "Not sure yet" },
 ] as const;
@@ -58,7 +58,7 @@ export const inquirySchema = z
       .transform((v) => (v && v.length ? v : undefined))
       .pipe(z.email("Please enter a valid email address.").optional()),
     contactMethod: z.enum(["phone", "whatsapp", "email"], { error: "Choose how we should contact you." }),
-    division: z.enum(["architecture", "interiors", "printing", "multiple", "not-sure"], {
+    division: z.enum(["architecture", "interiors", "branding", "multiple", "not-sure"], {
       error: "Choose the division or service you need.",
     }),
     location: trimmed(160).min(2, "Where is the project located?"),

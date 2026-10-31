@@ -33,7 +33,7 @@ export function GroupIntro() {
           <Reveal delay={0.1}>
             <p className="text-[0.95rem] leading-relaxed text-obsidian/65">
               A client planning a hotel can work with our architects and engineers on the building, with our interior and furniture
-              studio on the rooms and lobby, and with our print and advertising team on the signage and materials that open its
+              studio on the rooms and lobby, and with our branding and advertising team on the signage and materials that open its
               doors. Three specialised divisions, one standard of care.
             </p>
             <Link href="/about" className="group mt-8 inline-flex items-center gap-3 text-sm font-medium uppercase tracking-[0.14em]">
@@ -58,8 +58,12 @@ export function GroupIntro() {
           <Reveal>
             <dl className="divide-y divide-obsidian/10 border-y border-obsidian/10 text-sm">
               <div className="flex justify-between gap-4 py-4">
-                <dt className="text-obsidian/50">Headquarters</dt>
-                <dd className="text-right font-medium">Wolaita Sodo, Ethiopia</dd>
+                <dt className="text-obsidian/50">Offices</dt>
+                <dd className="text-right font-medium">Addis Ababa · Wolaita Sodo</dd>
+              </div>
+              <div className="flex justify-between gap-4 py-4">
+                <dt className="text-obsidian/50">Call</dt>
+                <dd className="text-right font-medium"><a href="tel:+251911971800" className="link-line">0911 97 18 00</a></dd>
               </div>
               <div className="flex justify-between gap-4 py-4">
                 <dt className="text-obsidian/50">Divisions</dt>

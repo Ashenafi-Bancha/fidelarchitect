@@ -10,6 +10,10 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: { formats: ["image/avif", "image/webp"] },
+  async redirects() {
+    // The third division is now "Fidelity Branding & Advertising".
+    return [{ source: "/divisions/printing", destination: "/divisions/branding", permanent: true }];
+  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },
