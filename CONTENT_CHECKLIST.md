@@ -11,7 +11,8 @@ The site is built so that **nothing unverified is presented as fact**. Every ite
 - [x] Phone: **0911 97 18 00** (group page, all division pages, both TikTok accounts)
 - [x] Email: **fidelityarchitects@gmail.com** (Architects page). Is there a group-wide email?
 - [x] Offices: **Addis Ababa** and **Wolaita Sodo** (Architects page). The group page lists Addis Ababa as its address.
-- [x] Social: group Facebook, the three division Facebook pages, TikTok @fidelity_architects; founder's Facebook and TikTok
+- [x] Social: group Facebook, the three division Facebook pages, TikTok @fidelity_architects, Telegram t.me/FidelityEmpire (from an Architects post); founder's Facebook and TikTok
+- [ ] A second phone, **0916 41 12 37**, appears on older Printing & Advertising posts. Is it still in use?
 - [ ] **Which city is headquarters?** The original brief said Wolaita Sodo, but the group's Facebook page lists Addis Ababa. The site shows both offices equally until this is confirmed.
 - [ ] Street addresses for each office → `NEXT_PUBLIC_OFFICE_ADDRESS`
 - [ ] Is 0911 97 18 00 also on WhatsApp? If so set `NEXT_PUBLIC_CONTACT_WHATSAPP=251911971800`. (Not shown until confirmed.)
@@ -31,11 +32,29 @@ The site is built so that **nothing unverified is presented as fact**. Every ite
 - [ ] Other team members to feature
 
 ## 4. Portfolio (`content/projects.ts`)
-- [x] **Dicha Boys Sneakers**, Wolaita Sodo. Logo and visual branding (Branding & Advertising) plus shop interior design (Architects). Client Adonai Birhane (Mada), as named in Fidelity's own posts. Published as verified.
-- [x] **Neon light signage**, Wolaita Sodo (Oct 2026 post). Published as verified, with minimal detail.
-- [ ] Photos for both projects. They are on Facebook; I have not downloaded them. Please send the original files, or confirm that I can use the Facebook images.
-- [ ] **Alex Hotel** (B+G+7) is still marked "Details pending" and excluded from search engines until scope, status and permission are confirmed.
-- [ ] More projects for each division. Facebook only shows a few recent posts without signing in, so older work couldn't be reviewed.
+Nine projects are published, all taken from Fidelity's own Facebook posts. Their images are stored in `public/projects/<slug>/`:
+
+| Project | Division | Images |
+|---|---|---|
+| Alex Hotel (B+G+7), Wolaita Sodo | Architects | 10 renders (Dec 2024) |
+| Dicha Boys Sneakers, Wolaita Sodo | Branding + Architects | logo + 5 interior renders (Sep 2026) |
+| Wolaita Sodo City Brand (logo + statue) | Architects + Branding | 2 logos, statue render, photo of built statue |
+| Wolaita Liga School entrance | Architects | 6 renders (Sep 2024) |
+| Wogeta FM 96.6 — 6th anniversary campaign | Branding | 5 campaign graphics |
+| I Love Wolaita — Land of 50+ Kings | Architects | 1 render (from "Works proposed & executed" poster) |
+| Gifata Square (ongoing proposal) | Architects | 1 render (same poster) |
+| Ligaba Park | Architects | 3 renders (same poster) |
+| Neon light signage | Branding | none yet. The post is a video, so a drawing is shown |
+
+Renders are labelled **"3D render"** on the site and are never presented as completed buildings.
+
+- [ ] Confirm the status of each project (designed / under construction / completed) and add completion years
+- [ ] Confirm Fidelity's exact scope on Alex Hotel (architectural only, or also structural / supervision?)
+- [ ] Confirm the school's name spelling: "Wolaita Liga School" on the render sign, "Wolaita Liqa School" in a fundraising post
+- [ ] Higher-resolution originals for the "Works proposed & executed" projects (currently cropped from one poster)
+- [ ] Photos of the neon signage (stills from the video)
+- [ ] Permission check: the clients named (Adonai Birhane / Dicha Boys, Wogeta FM 96.6) were named in Fidelity's own public posts
+- [ ] More projects for the Furniture & Interior Design division. Its Facebook album wasn't reachable without signing in.
 
 ## 5. Photography
 - [ ] Office and team photos

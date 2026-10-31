@@ -8,7 +8,7 @@ Corporate website for Fidelity Business Group (Wolaita Sodo, Ethiopia), covering
 - **Next.js 16** (App Router, TypeScript). Public pages are statically pre-rendered.
 - **Tailwind CSS 4**. Design tokens live in `app/globals.css`.
 - **Framer Motion** for reveals, masks, parallax and the brand-story sequence. It respects `prefers-reduced-motion`.
-- **React Three Fiber / three.js** for the hero, where the Fidelity mark is extruded into architecture. It loads only on large screens without reduced motion, and pauses when off-screen.
+- **React Three Fiber / three.js** for the hero, where the Fidelity mark is extruded into architecture. On phones it runs as a lighter version (no shadows, lower pixel density) that sways slowly on its own. It is skipped for reduced motion and data-saver, and pauses when off-screen.
 - **Zod**: one validation schema shared by the browser and the server.
 - **lucide-react** for icons.
 
@@ -20,6 +20,8 @@ Corporate website for Fidelity Business Group (Wolaita Sodo, Ethiopia), covering
 - **Cursor companion**: on desktop, a ring that labels project cards ("View") and divisions ("Explore").
 - **Materials & Craft**: a procedurally rendered sample board of oak, walnut, travertine, terrazzo, linen, brass, steel and velvet (`components/visuals/Material.tsx`).
 - **Identity in Use**: a parallax collage of the Fidelity identity on stationery, a site hoarding and a roll-up banner.
+- **Mobile**: a labelled three-line **Menu** button, a full-screen menu, and a floating Call / Start a Project bar that appears after the hero.
+- **Social icons**: official platform marks in brand colours (`components/brand/SocialIcon.tsx`).
 
 ## Getting started
 ```bash

@@ -5,6 +5,7 @@ import { SectionLabel } from "@/components/ui/Button";
 import { site, mapsDirectionsUrl, telUrl, whatsappUrl } from "@/content/site";
 import { divisions } from "@/content/divisions";
 import { DivisionMark } from "@/components/brand/Logo";
+import { SocialBadge, isPlatform } from "@/components/brand/SocialIcon";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -101,9 +102,12 @@ export default function ContactPage() {
                   {site.social.map((s) => (
                     <li key={s.href}>
                       <a href={s.href} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between gap-4 py-3 hover:text-bone">
-                        <span>
-                          <span className="text-bone/90">{s.label}</span>
-                          {s.detail && <span className="ml-2 text-bone/45">{s.detail}</span>}
+                        <span className="flex min-w-0 items-center gap-4">
+                          {isPlatform(s.label) && <SocialBadge platform={s.label} />}
+                          <span className="min-w-0">
+                            <span className="block text-bone/90">{s.label}</span>
+                            {s.detail && <span className="block truncate text-xs text-bone/45">{s.detail}</span>}
+                          </span>
                         </span>
                         <ArrowUpRight className="h-4 w-4 text-bone/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
                       </a>
@@ -113,10 +117,17 @@ export default function ContactPage() {
                     d.social.filter((s) => !site.social.some((g) => g.href === s.href)).map((s) => (
                       <li key={s.href}>
                         <a href={s.href} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between gap-4 py-3 hover:text-bone">
-                          <span className="flex items-center gap-3">
-                            <DivisionMark division={d.slug} className="h-5 w-5 text-bone" />
-                            <span className="text-bone/90">{s.label}</span>
-                            <span className="text-bone/45">{d.shortName}</span>
+                          <span className="flex min-w-0 items-center gap-4">
+                            <span className="relative">
+                              {isPlatform(s.label) && <SocialBadge platform={s.label} />}
+                              <span className="absolute -bottom-1 -right-1 grid h-5 w-5 place-items-center rounded-full bg-bone">
+                                <DivisionMark division={d.slug} className="h-3.5 w-3.5 text-obsidian" />
+                              </span>
+                            </span>
+                            <span className="min-w-0">
+                              <span className="block text-bone/90">{s.label}</span>
+                              <span className="block truncate text-xs text-bone/45">{d.name}</span>
+                            </span>
                           </span>
                           <ArrowUpRight className="h-4 w-4 text-bone/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
                         </a>

@@ -15,7 +15,6 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 function canUse3D() {
   if (typeof window === "undefined") return false;
-  if (!window.matchMedia("(min-width: 1024px)").matches) return false;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
   const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
   if (conn?.saveData) return false;
@@ -31,10 +30,16 @@ export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const [use3D, setUse3D] = useState(false);
+  const [compact, setCompact] = useState(false);
   const [sceneReady, setSceneReady] = useState(false);
 
   useEffect(() => {
     setUse3D(canUse3D());
+    const mq = window.matchMedia("(max-width: 1023px)");
+    setCompact(mq.matches);
+    const on = () => setCompact(mq.matches);
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
   }, []);
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -58,7 +63,7 @@ export function Hero() {
           transition={{ duration: 1.2 }}
         >
           <motion.div
-            className="absolute right-[-18%] top-[18%] w-[95%] text-bone/[0.07] sm:right-[-6%] sm:w-[70%] lg:right-[4%] lg:top-[14%] lg:w-[46%]"
+            className="absolute left-[12%] top-[12%] w-[76%] text-bone/[0.08] sm:left-[22%] sm:w-[56%] lg:left-auto lg:right-[4%] lg:top-[14%] lg:w-[46%]"
             initial={reduce ? false : { clipPath: "inset(100% 0 0 0)" }}
             animate={{ clipPath: "inset(0% 0 0 0)" }}
             transition={{ duration: 1.8, ease: [0.65, 0, 0.35, 1], delay: 0.2 }}
@@ -73,11 +78,11 @@ export function Hero() {
             animate={{ opacity: sceneReady ? 1 : 0 }}
             transition={{ duration: 1.4, ease }}
           >
-            <HeroScene onReady={() => setSceneReady(true)} />
+            <HeroScene key={compact ? "compact" : "wide"} compact={compact} onReady={() => setSceneReady(true)} />
           </motion.div>
         )}
         {/* readability gradient for the text column */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/70 to-transparent lg:via-obsidian/30" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian from-35% via-obsidian/70 via-55% to-transparent to-75% lg:bg-gradient-to-r lg:from-0% lg:via-obsidian/30 lg:via-50% lg:to-100%" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-obsidian to-transparent" />
       </motion.div>
 

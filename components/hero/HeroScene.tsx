@@ -86,18 +86,22 @@ function Tower({ mirror, delay }: { mirror: boolean; delay: number }) {
   );
 }
 
-function Composition() {
+function Composition({ compact }: { compact: boolean }) {
   const root = useRef<THREE.Group>(null);
   const { camera } = useThree();
 
   useEffect(() => {
-    camera.lookAt(0.9, 1.6, 0);
-  }, [camera]);
+    // Phones: towers sit in the upper part of the screen, above the headline.
+    if (compact) camera.lookAt(0, -2.55, 0);
+    else camera.lookAt(0.9, 1.6, 0);
+  }, [camera, compact]);
 
   useFrame((state, delta) => {
     if (!root.current) return;
-    const tx = -0.42 + state.pointer.x * 0.18;
-    const ty = state.pointer.y * 0.05;
+    // Touch screens have no hover, so the composition sways slowly on its own.
+    const sway = compact ? Math.sin(state.clock.elapsedTime * 0.35) * 0.32 : state.pointer.x * 0.18;
+    const tx = -0.42 + sway;
+    const ty = compact ? 0 : state.pointer.y * 0.05;
     root.current.rotation.y = THREE.MathUtils.damp(root.current.rotation.y, tx, 2.5, delta);
     root.current.rotation.x = THREE.MathUtils.damp(root.current.rotation.x, ty, 2.5, delta);
   });
@@ -121,7 +125,7 @@ function Composition() {
   );
 }
 
-export default function HeroScene({ onReady }: { onReady?: () => void }) {
+export default function HeroScene({ onReady, compact = false }: { onReady?: () => void; compact?: boolean }) {
   const wrap = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(true);
 
@@ -136,16 +140,16 @@ export default function HeroScene({ onReady }: { onReady?: () => void }) {
   return (
     <div ref={wrap} className="absolute inset-0" aria-hidden="true">
       <Canvas
-        shadows
-        dpr={[1, 1.75]}
+        shadows={!compact}
+        dpr={compact ? [1, 1.5] : [1, 1.75]}
         frameloop={visible ? "always" : "never"}
-        camera={{ position: [4.6, 2.8, 12.8], fov: 30, near: 0.1, far: 80 }}
-        gl={{ antialias: true, powerPreference: "high-performance", alpha: false }}
+        camera={compact ? { position: [3.2, 2.6, 21], fov: 34, near: 0.1, far: 80 } : { position: [4.6, 2.8, 12.8], fov: 30, near: 0.1, far: 80 }}
+        gl={{ antialias: !compact, powerPreference: compact ? "default" : "high-performance", alpha: false }}
         onCreated={({ gl, scene }) => {
           gl.toneMapping = THREE.ACESFilmicToneMapping;
           gl.toneMappingExposure = 1.05;
           scene.background = new THREE.Color("#0b0b0c");
-          scene.fog = new THREE.Fog("#0b0b0c", 9, 22);
+          scene.fog = compact ? new THREE.Fog("#0b0b0c", 19, 34) : new THREE.Fog("#0b0b0c", 9, 22);
           onReady?.();
         }}
       >
@@ -155,7 +159,7 @@ export default function HeroScene({ onReady }: { onReady?: () => void }) {
           position={[6, 9, 5]}
           intensity={2.4}
           color="#fff4e2"
-          castShadow
+          castShadow={!compact}
           shadow-mapSize={[1536, 1536]}
           shadow-camera-left={-6}
           shadow-camera-right={6}
@@ -164,8 +168,8 @@ export default function HeroScene({ onReady }: { onReady?: () => void }) {
           shadow-bias={-0.0004}
         />
         <directionalLight position={[-6, 3, -6]} intensity={0.9} color="#b89b6a" />
-        <group position={[3.1, 0, -0.8]} scale={0.82}>
-          <Composition />
+        <group position={compact ? [0, 0, 0] : [3.1, 0, -0.8]} scale={compact ? 0.56 : 0.82}>
+          <Composition compact={compact} />
         </group>
       </Canvas>
     </div>

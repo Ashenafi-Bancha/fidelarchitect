@@ -40,7 +40,7 @@ export default function OgImage() {
             <div style={{ width: 16, height: 16, background: "#c8222a" }} />
             <div style={{ width: 16, height: 16, background: "#1f5c3d" }} />
             <div style={{ width: 16, height: 16, background: "#e5bf00" }} />
-            <div style={{ display: "flex", marginLeft: 12 }}>WOLAITA SODO · ETHIOPIA</div>
+            <div style={{ display: "flex", marginLeft: 12 }}>ADDIS ABABA · WOLAITA SODO</div>
           </div>
         </div>
       </div>

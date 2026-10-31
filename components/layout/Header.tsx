@@ -165,14 +165,36 @@ export function Header() {
             </div>
             <button
               type="button"
-              className="relative grid h-11 w-11 place-items-center lg:hidden"
+              className={cn(
+                "group flex h-11 items-center gap-3 rounded-full border pl-4 pr-3 transition-colors duration-300 lg:hidden",
+                onLight ? "border-obsidian/15 bg-obsidian/[0.03] hover:bg-obsidian/[0.07]" : "border-bone/20 bg-bone/[0.06] backdrop-blur-sm hover:bg-bone/[0.12]",
+              )}
               aria-expanded={menu}
               aria-controls="mobile-menu"
-              aria-label={menu ? "Close menu" : "Open menu"}
               onClick={() => setMenu((m) => !m)}
             >
-              <span className={cn("absolute h-px w-6 bg-current transition-transform duration-500", menu ? "rotate-45" : "-translate-y-1.5")} />
-              <span className={cn("absolute h-px w-6 bg-current transition-transform duration-500", menu ? "-rotate-45" : "translate-y-1.5")} />
+              <span className="text-[0.72rem] font-semibold uppercase tracking-[0.18em]">{menu ? "Close" : "Menu"}</span>
+              {/* Three-line icon that folds into an X */}
+              <span className="relative block h-3.5 w-5" aria-hidden="true">
+                <span
+                  className={cn(
+                    "absolute left-0 top-0 h-[1.5px] w-5 rounded-full bg-current transition-transform duration-500 ease-[var(--ease-out-expo)]",
+                    menu && "translate-y-[6px] rotate-45",
+                  )}
+                />
+                <span
+                  className={cn(
+                    "absolute left-0 top-1/2 h-[1.5px] w-5 -translate-y-1/2 rounded-full bg-current transition-all duration-300",
+                    menu ? "scale-x-0 opacity-0" : "w-3.5 group-hover:w-5",
+                  )}
+                />
+                <span
+                  className={cn(
+                    "absolute bottom-0 left-0 h-[1.5px] w-5 rounded-full bg-current transition-transform duration-500 ease-[var(--ease-out-expo)]",
+                    menu && "-translate-y-[6px] -rotate-45",
+                  )}
+                />
+              </span>
             </button>
           </div>
         </div>

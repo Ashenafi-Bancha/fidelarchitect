@@ -5,6 +5,7 @@ import { organizationJsonLd } from "@/lib/seo";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { BrandIntro } from "@/components/providers/BrandIntro";
 import { Cursor } from "@/components/providers/Cursor";
+import { MobileActionBar } from "@/components/layout/MobileActionBar";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,6 +17,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <Header />
       <main id="main">{children}</main>
       <Footer />
+      <MobileActionBar />
     </>
   );
 }

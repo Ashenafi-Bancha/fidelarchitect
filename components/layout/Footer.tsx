@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Mail, MapPin, MessageCircle, Phone, Clock } from "lucide-react";
 import { FidelityMark, DivisionMark } from "@/components/brand/Logo";
+import { SocialBadge, isPlatform } from "@/components/brand/SocialIcon";
 import { divisions } from "@/content/divisions";
 import { projects } from "@/content/projects";
 import { site, mapsDirectionsUrl, telUrl, whatsappUrl, locationLabel } from "@/content/site";
@@ -131,10 +132,18 @@ export function Footer() {
             )}
           </ul>
           {site.social.length > 0 && (
-            <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs uppercase tracking-[0.14em] text-bone/60">
+            <ul className="mt-6 flex flex-wrap gap-3">
               {site.social.map((s) => (
                 <li key={s.label}>
-                  <a href={s.href} target="_blank" rel="noopener noreferrer" className="link-line hover:text-bone">{s.label}</a>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${site.name} on ${s.label}`}
+                    className="block transition-transform duration-300 hover:-translate-y-0.5"
+                  >
+                    {isPlatform(s.label) ? <SocialBadge platform={s.label} /> : s.label}
+                  </a>
                 </li>
               ))}
             </ul>

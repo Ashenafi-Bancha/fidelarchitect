@@ -11,6 +11,7 @@ import { pageMetadata } from "@/lib/seo";
 import { Photo } from "@/components/visuals/Photo";
 import { images } from "@/content/imagery";
 import { site } from "@/content/site";
+import { SocialBadge } from "@/components/brand/SocialIcon";
 
 export const metadata = pageMetadata({
   title: "About Fidelity Business Group",
@@ -98,14 +99,14 @@ export default function AboutPage() {
               </p>
             </Reveal>
           </div>
-          <Reveal className="lg:col-span-6 lg:col-start-7">
-            <article className="border border-bone/10 bg-charcoal/60 p-8 sm:p-10">
-              <div className="flex items-start gap-6">
-                <span className="grid h-20 w-20 shrink-0 place-items-center bg-bone font-display text-2xl font-semibold text-obsidian" aria-hidden="true">
+          <Reveal className="min-w-0 lg:col-span-6 lg:col-start-7">
+            <article className="border border-bone/10 bg-charcoal/60 p-6 sm:p-10">
+              <div className="flex items-start gap-4 sm:gap-6">
+                <span className="grid h-14 w-14 shrink-0 sm:h-20 sm:w-20 place-items-center bg-bone font-display text-2xl font-semibold text-obsidian" aria-hidden="true">
                   FG
                 </span>
                 <div>
-                  <h3 className="font-display text-3xl font-semibold uppercase tracking-tight">{site.founder.name}</h3>
+                  <h3 className="font-display text-2xl font-semibold uppercase tracking-tight [overflow-wrap:anywhere] sm:text-3xl">{site.founder.name}</h3>
                   <p className="mt-1 text-champagne-soft">Architect · {site.founder.title}</p>
                 </div>
               </div>
@@ -125,11 +126,11 @@ export default function AboutPage() {
                 ))}
               </dl>
               <div className="mt-8 flex flex-wrap gap-5 text-xs font-semibold uppercase tracking-[0.14em]">
-                <a href={site.founder.facebook} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-bone/70 hover:text-bone">
-                  Facebook <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                <a href={site.founder.facebook} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-bone/70 hover:text-bone">
+                  <SocialBadge platform="Facebook" size="sm" /> Facebook
                 </a>
-                <a href={site.founder.tiktok} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-bone/70 hover:text-bone">
-                  TikTok · Fidel The Architect <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                <a href={site.founder.tiktok} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-bone/70 hover:text-bone">
+                  <SocialBadge platform="TikTok" size="sm" /> Fidel The Architect
                 </a>
               </div>
             </article>

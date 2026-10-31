@@ -14,6 +14,8 @@ import { pageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
+const kindLabel = { photo: "", render: "3D render", drawing: "Drawing", graphic: "Design" } as const;
+
 export async function generateStaticParams() {
   return (await getProjects()).map((p) => ({ slug: p.slug }));
 }
@@ -92,6 +94,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             {p.typology} · {p.location}
           </p>
           <RevealLines as="h1" animateOnMount delay={0.2} className="display-xl mt-6" lines={[p.title]} />
+          {cover && cover.kind !== "photo" && (
+            <p className="eyebrow mt-8 text-bone/45">{kindLabel[cover.kind]} · Fidelity Business Group</p>
+          )}
           {!cover && (
             <p className="eyebrow mt-8 text-bone/45">Schematic illustration · approved drawings and photography pending</p>
           )}
@@ -159,21 +164,29 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       {gallery.length > 0 && (
         <section className="bg-bone pb-24" aria-label="Project images">
           <div className="container-x grid gap-6 md:grid-cols-2">
-            {gallery.map((img, i) => (
-              <MaskReveal key={img.src} className={i % 3 === 0 ? "md:col-span-2" : ""}>
-                <figure>
-                  <div className="relative overflow-hidden bg-linen" style={{ aspectRatio: `${img.width}/${img.height}` }}>
-                    <Image src={img.src} alt={img.alt} fill sizes={i % 3 === 0 ? "100vw" : "50vw"} className="object-cover" />
-                  </div>
-                  {(img.caption || img.kind !== "photo") && (
-                    <figcaption className="mt-3 text-xs text-obsidian/55">
-                      {img.kind === "render" ? "Render — " : img.kind === "drawing" ? "Drawing — " : ""}
-                      {img.caption}
-                    </figcaption>
-                  )}
-                </figure>
-              </MaskReveal>
-            ))}
+            {gallery.map((img, i) => {
+              const ratio = img.width / img.height;
+              // Wide images may span both columns; tall ones are letterboxed so they never dominate the page.
+              const wide = ratio >= 1.3 && i % 3 === 0;
+              const shown = Math.min(Math.max(ratio, 0.8), 2.2);
+              const label = [kindLabel[img.kind], img.caption].filter(Boolean).join(" — ");
+              return (
+                <MaskReveal key={img.src} className={wide ? "md:col-span-2" : ""}>
+                  <figure>
+                    <div className="relative overflow-hidden bg-linen" style={{ aspectRatio: String(shown) }}>
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        sizes={wide ? "100vw" : "(min-width:768px) 50vw, 100vw"}
+                        className={shown !== ratio ? "object-contain" : "object-cover"}
+                      />
+                    </div>
+                    {label && <figcaption className="mt-3 text-xs text-obsidian/55">{label}</figcaption>}
+                  </figure>
+                </MaskReveal>
+              );
+            })}
           </div>
         </section>
       )}

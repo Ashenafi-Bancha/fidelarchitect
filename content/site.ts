@@ -42,7 +42,7 @@ export const site = {
     { label: "TikTok", detail: "@fidelity_architects", href: env(process.env.NEXT_PUBLIC_SOCIAL_TIKTOK) ?? "https://www.tiktok.com/@fidelity_architects" },
     { label: "Instagram", detail: "", href: env(process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM) },
     { label: "LinkedIn", detail: "", href: env(process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN) },
-    { label: "Telegram", detail: "", href: env(process.env.NEXT_PUBLIC_SOCIAL_TELEGRAM) },
+    { label: "Telegram", detail: "t.me/FidelityEmpire", href: env(process.env.NEXT_PUBLIC_SOCIAL_TELEGRAM) ?? "https://t.me/FidelityEmpire" },
   ].filter((s): s is { label: string; detail: string; href: string } => Boolean(s.href)),
   founder: {
     name: "Fidel Gebremedhin",
