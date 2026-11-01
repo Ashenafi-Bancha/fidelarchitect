@@ -2,13 +2,13 @@
 
 *From Thought to Empire.*
 
-Corporate website for Fidelity Business Group (Wolaita Sodo, Ethiopia), covering its three divisions: Architects & Consulting Engineers, Furniture & Interior Design, and Printing & Advertising. It includes a working project-inquiry system and a staff lead-management area.
+Corporate website for Fidelity Business Group (Addis Ababa and Wolaita Sodo, Ethiopia), covering its three divisions: Architects & Consulting Engineers, Furniture & Interior Design, and Branding & Advertising. It includes a working project-inquiry system and a staff lead-management area.
 
 ## Stack
 - **Next.js 16** (App Router, TypeScript). Public pages are statically pre-rendered.
 - **Tailwind CSS 4**. Design tokens live in `app/globals.css`.
 - **Framer Motion** for reveals, masks, parallax and the brand-story sequence. It respects `prefers-reduced-motion`.
-- **React Three Fiber / three.js** for the hero, where the Fidelity mark is extruded into architecture. On phones it runs as a lighter version (no shadows, lower pixel density) that sways slowly on its own. It is skipped for reduced motion and data-saver, and pauses when off-screen.
+- **React Three Fiber / three.js** for the hero, where the Fidelity mark is extruded into architecture. Visitors can drag it to rotate it, with momentum, and it turns slowly on its own when idle. On phones it sits in its own stage above the headline and runs a lighter render without shadows; there, only horizontal swipes rotate it, so vertical swipes still scroll the page. Reduced-motion users get a still model, and rendering pauses when the hero is off-screen.
 - **Zod**: one validation schema shared by the browser and the server.
 - **lucide-react** for icons.
 
