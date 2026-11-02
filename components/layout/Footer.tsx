@@ -19,7 +19,7 @@ export function Footer() {
       </h2>
 
       {/* CTA band */}
-      <div className="container-x border-b border-bone/10 py-20 sm:py-28">
+      <div className="container-x border-b border-bone/10 py-14 sm:py-28">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <Reveal className="lg:col-span-8">
             <p className="eyebrow mb-6 text-champagne-soft">Have a project in mind?</p>
@@ -48,7 +48,7 @@ export function Footer() {
             <FidelityMark className="h-10 w-10" />
             <div className="leading-none">
               <p className="font-display text-lg font-semibold uppercase tracking-[0.18em]">Fidelity</p>
-              <p className="mt-1 text-[0.62rem] uppercase tracking-[0.32em] text-bone/50">Business Group</p>
+              <p className="mt-1 text-[0.68rem] uppercase tracking-[0.28em] text-bone/50">Business Group</p>
             </div>
           </div>
           <p className="mt-6 font-serif text-2xl italic text-champagne-soft">From Thought to Empire.</p>
@@ -95,7 +95,7 @@ export function Footer() {
               <span className="space-y-1">
                 {site.location.address && <span className="block">{site.location.address}</span>}
                 {site.location.offices.map((o) => (
-                  <a key={o} href={mapsDirectionsUrl(o)} target="_blank" rel="noopener noreferrer" className="link-line block w-fit hover:text-bone">
+                  <a key={o} href={mapsDirectionsUrl(o)} target="_blank" rel="noopener noreferrer" className="link-line flex min-h-11 w-fit items-center hover:text-bone lg:block lg:min-h-0">
                     {o}
                   </a>
                 ))}
@@ -163,7 +163,7 @@ export function Footer() {
       <div className="container-x flex flex-col gap-3 border-t border-bone/10 py-6 text-xs text-bone/45 sm:flex-row sm:items-center sm:justify-between">
         <p>© {year} {site.name}. All rights reserved.</p>
         <div className="flex gap-6">
-          <Link href="/privacy" className="link-line hover:text-bone">Privacy Policy</Link>
+          <Link href="/privacy" className="link-line inline-flex min-h-11 items-center hover:text-bone lg:min-h-0">Privacy Policy</Link>
           <span>{locationLabel}</span>
         </div>
       </div>

@@ -37,7 +37,7 @@ export default function AboutPage() {
         intro="Fidelity Business Group brings specialised disciplines together to transform ambitious visions into meaningful spaces, products and experiences."
       />
 
-      <section className="bg-bone py-24 sm:py-36" aria-labelledby="intro">
+      <section className="bg-bone py-16 sm:py-36" aria-labelledby="intro">
         <div className="container-x grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionLabel index="01">Who we are</SectionLabel>
@@ -71,7 +71,7 @@ export default function AboutPage() {
 
       <Philosophy index="02" />
 
-      <section className="bg-linen py-24 sm:py-32" aria-labelledby="principles">
+      <section className="bg-linen py-16 sm:py-32" aria-labelledby="principles">
         <div className="container-x">
           <SectionLabel index="03">How we approach every project</SectionLabel>
           <RevealLines id="principles" as="h2" className="display-lg mt-8 mb-16" lines={["Four principles,", "every discipline."]} />
@@ -126,10 +126,10 @@ export default function AboutPage() {
                 ))}
               </dl>
               <div className="mt-8 flex flex-wrap gap-5 text-xs font-semibold uppercase tracking-[0.14em]">
-                <a href={site.founder.facebook} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-bone/70 hover:text-bone">
+                <a href={site.founder.facebook} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 text-bone/70 hover:text-bone">
                   <SocialBadge platform="Facebook" size="sm" /> Facebook
                 </a>
-                <a href={site.founder.tiktok} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-bone/70 hover:text-bone">
+                <a href={site.founder.tiktok} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 text-bone/70 hover:text-bone">
                   <SocialBadge platform="TikTok" size="sm" /> Fidel The Architect
                 </a>
               </div>
@@ -138,7 +138,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-bone py-24 sm:py-32" aria-labelledby="divs">
+      <section className="bg-bone py-16 sm:py-32" aria-labelledby="divs">
         <div className="container-x">
           <SectionLabel index="04">Our divisions</SectionLabel>
           <h2 id="divs" className="display-md mt-8 mb-12">Three specialists, one standard.</h2>

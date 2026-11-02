@@ -92,7 +92,7 @@ export function Logo({
       {!compact && (
         <span className="flex flex-col leading-none">
           <span className="font-display text-[0.95rem] font-semibold uppercase tracking-[0.18em]">Fidelity</span>
-          <span className="mt-1 text-[0.58rem] font-medium uppercase tracking-[0.32em] opacity-60">Business Group</span>
+          <span className="mt-1 text-[0.66rem] font-medium uppercase tracking-[0.28em] opacity-60">Business Group</span>
         </span>
       )}
     </Link>

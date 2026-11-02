@@ -102,7 +102,7 @@ export function PendingNote({ children, className }: { children: ReactNode; clas
         className,
       )}
     >
-      <span className="eyebrow !text-[0.6rem] shrink-0 pt-px">Pending</span>
+      <span className="eyebrow !text-[0.68rem] shrink-0 pt-px">Pending</span>
       <span>{children}</span>
     </p>
   );

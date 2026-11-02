@@ -36,7 +36,7 @@ export default function ServicesPage() {
       </PageHero>
 
       {divisions.map((d) => (
-        <section key={d.slug} id={d.slug} className="scroll-mt-[var(--header-h)] border-b border-obsidian/10 bg-bone py-20 sm:py-28" aria-labelledby={`s-${d.slug}`}>
+        <section key={d.slug} id={d.slug} className="scroll-mt-[var(--header-h)] border-b border-obsidian/10 bg-bone py-14 sm:py-28" aria-labelledby={`s-${d.slug}`}>
           <div className="container-x grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
@@ -65,7 +65,7 @@ export default function ServicesPage() {
         </section>
       ))}
 
-      <section className="bg-linen py-24 sm:py-32" aria-labelledby="how">
+      <section className="bg-linen py-16 sm:py-32" aria-labelledby="how">
         <div className="container-x">
           <SectionLabel>How an engagement works</SectionLabel>
           <RevealLines id="how" as="h2" className="display-lg mt-8 mb-14" lines={["Four clear steps."]} />

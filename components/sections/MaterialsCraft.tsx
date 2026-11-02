@@ -9,9 +9,9 @@ import { images } from "@/content/imagery";
 /** Interior-design sample board: materials, finishes and craft. */
 export function MaterialsCraft({ index, showLink = true }: { index?: string; showLink?: boolean }) {
   return (
-    <section className="relative overflow-hidden bg-bone py-24 sm:py-36" aria-labelledby="materials-title">
+    <section className="relative overflow-hidden bg-bone py-16 sm:py-36" aria-labelledby="materials-title">
       <div className="container-x grid gap-16 lg:grid-cols-12">
-        <div className="lg:col-span-5">
+        <div className="min-w-0 lg:col-span-5">
           <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
             <SectionLabel index={index}>Materials & Craft</SectionLabel>
             <RevealLines
@@ -40,11 +40,11 @@ export function MaterialsCraft({ index, showLink = true }: { index?: string; sho
           </div>
         </div>
 
-        <div className="lg:col-span-7">
+        <div className="min-w-0 lg:col-span-7">
           {/* sample board */}
-          <ul className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4" aria-label="Material palette">
+          <ul className="-mx-[var(--gutter)] flex snap-x snap-mandatory gap-3 overflow-x-auto px-[var(--gutter)] pb-4 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-4 md:gap-4 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden" aria-label="Material palette">
             {materials.map((m, i) => (
-              <Reveal as="li" key={m.key} delay={(i % 4) * 0.06} className={i % 4 === 1 || i % 4 === 3 ? "md:translate-y-10" : ""}>
+              <Reveal as="li" key={m.key} delay={(i % 4) * 0.06} className={`w-[42%] shrink-0 snap-start md:w-auto ${i % 4 === 1 || i % 4 === 3 ? "md:translate-y-10" : ""}`}>
                 <div className="group">
                   <div className="relative aspect-[3/4] overflow-hidden shadow-[0_24px_50px_-30px_rgba(11,11,12,0.6)] transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:-translate-y-2">
                     <MaterialSwatch material={m.key} id="mc" className="absolute inset-0 h-full w-full transition-transform duration-[1.4s] ease-[var(--ease-out-expo)] group-hover:scale-110" />
@@ -60,13 +60,13 @@ export function MaterialsCraft({ index, showLink = true }: { index?: string; sho
             ))}
           </ul>
 
-          <div className="mt-24 grid gap-4 sm:grid-cols-5">
-            <MaskReveal className="sm:col-span-3">
-              <Parallax className="aspect-[4/3] sm:aspect-auto sm:h-full sm:min-h-[22rem]" amount={40} tag="Reference image">
+          <div className="mt-10 grid grid-cols-5 gap-3 sm:mt-24 sm:gap-4">
+            <MaskReveal className="col-span-3">
+              <Parallax className="h-full min-h-[11rem] sm:min-h-[22rem]" amount={40} tag="Reference image">
                 <Photo image={images.intDiningGreen} sizes="(min-width:1024px) 35vw, 100vw" className="h-full w-full" tagPosition="none" />
               </Parallax>
             </MaskReveal>
-            <MaskReveal className="sm:col-span-2" delay={0.12}>
+            <MaskReveal className="col-span-2" delay={0.12}>
               <Photo image={images.intCabinet} sizes="(min-width:1024px) 25vw, 100vw" className="aspect-[3/4] w-full" tagPosition="top-right" />
             </MaskReveal>
           </div>

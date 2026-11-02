@@ -104,7 +104,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </header>
 
       {/* Facts + overview */}
-      <section className="bg-bone py-20 sm:py-28">
+      <section className="bg-bone py-14 sm:py-28">
         <div className="container-x grid gap-16 lg:grid-cols-12">
           <aside className="lg:col-span-4" aria-label="Project facts">
             <dl className="border-t border-obsidian/15 text-sm lg:sticky lg:top-[calc(var(--header-h)+2rem)]">

@@ -116,7 +116,7 @@ export function Hero() {
       </motion.div>
 
       {/* ---------- Phone & tablet: model in its own stage above the text ---------- */}
-      <div className="relative mt-[var(--header-h)] h-[46svh] min-h-[300px] max-h-[520px] lg:hidden">
+      <div className="relative mt-[var(--header-h)] h-[40svh] min-h-[270px] max-h-[480px] lg:hidden">
         <StaticMark hidden={sceneReady && compact} className="absolute left-1/2 top-[10%] w-[62%] max-w-[340px] -translate-x-1/2 text-bone/[0.1]" />
         {webgl && compact && (
           <motion.div className="absolute inset-0" initial={{ opacity: 0 }} animate={{ opacity: sceneReady ? 1 : 0 }} transition={{ duration: 1.2, ease }}>

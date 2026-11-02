@@ -17,7 +17,7 @@ export default function PrivacyPage() {
   return (
     <>
       <PageHero eyebrow="Legal" title="Privacy Policy" lines={["Privacy", "policy."]} intro={`Last updated ${LAST_UPDATED}.`} />
-      <section className="bg-bone py-20 sm:py-28">
+      <section className="bg-bone py-14 sm:py-28">
         <div className="container-x">
           <div className="max-w-3xl space-y-12 leading-relaxed text-obsidian/75 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:text-obsidian [&_li]:ml-5 [&_li]:list-disc [&_p]:mt-4 [&_ul]:mt-4 [&_ul]:space-y-2">
             <div>

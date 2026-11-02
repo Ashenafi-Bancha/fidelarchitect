@@ -10,7 +10,7 @@ import { images } from "@/content/imagery";
 
 export function GroupIntro() {
   return (
-    <section id="group" className="relative scroll-mt-[var(--header-h)] overflow-hidden bg-bone py-24 sm:py-36" aria-labelledby="group-title">
+    <section id="group" className="relative scroll-mt-[var(--header-h)] overflow-hidden bg-bone py-16 sm:py-36" aria-labelledby="group-title">
       {/* geometric motif from the mark */}
       <FidelityMark className="pointer-events-none absolute -left-32 top-10 hidden h-[30rem] w-[30rem] text-obsidian/[0.03] lg:block" />
 

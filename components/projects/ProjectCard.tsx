@@ -59,10 +59,10 @@ export function ProjectCard({
           </div>
           <div className="absolute left-4 top-4 flex items-center gap-2">
             <span className="h-2.5 w-2.5" style={{ background: division?.color }} aria-hidden="true" />
-            <span className="eyebrow !text-[0.6rem] bg-obsidian/70 px-2 py-1 text-bone">{project.categories.join(" · ")}</span>
+            <span className="eyebrow !text-[0.68rem] bg-obsidian/70 px-2 py-1 text-bone">{project.categories.join(" · ")}</span>
           </div>
           {!project.verified && (
-            <span className="eyebrow !text-[0.6rem] absolute right-4 top-4 border border-dashed border-bone/40 bg-obsidian/60 px-2 py-1 text-bone/80">
+            <span className="eyebrow !text-[0.68rem] absolute right-4 top-4 border border-dashed border-bone/40 bg-obsidian/60 px-2 py-1 text-bone/80">
               Details pending
             </span>
           )}

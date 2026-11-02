@@ -32,7 +32,7 @@ export function Schematic({ variant, accent = "var(--color-champagne)", tone = "
       {label !== false && (
         <figcaption
           className={cn(
-            "absolute bottom-3 left-3 eyebrow !text-[0.6rem] !tracking-[0.18em] px-2 py-1",
+            "absolute bottom-3 left-3 eyebrow !text-[0.68rem] !tracking-[0.18em] px-2 py-1",
             tone === "dark" ? "bg-obsidian/70 text-bone/70" : "bg-bone/80 text-obsidian/60",
           )}
         >

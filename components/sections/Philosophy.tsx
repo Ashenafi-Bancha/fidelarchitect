@@ -134,7 +134,7 @@ export function Philosophy({ index = "04" }: { index?: string }) {
               <p className="eyebrow text-obsidian/50">{String(i + 1).padStart(2, "0")} — {s.word}</p>
               <p className="mt-3 font-display text-xl font-semibold tracking-tight">{s.title}</p>
               <p className="mt-3 leading-relaxed text-obsidian/65">{s.body}</p>
-              <div className="relative mt-6 aspect-[4/3] overflow-hidden">{s.visual}</div>
+              <div className="relative mt-5 aspect-[16/10] overflow-hidden">{s.visual}</div>
             </li>
           ))}
         </ol>

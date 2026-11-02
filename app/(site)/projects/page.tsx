@@ -27,13 +27,13 @@ export default async function ProjectsPage() {
         intro="A curated record of the buildings, interiors and printed work shaped by Fidelity's divisions. Each project is published once its details and permissions are confirmed."
       />
 
-      <section className="bg-bone py-20 sm:py-28" aria-label="Project list">
+      <section className="bg-bone py-14 sm:py-28" aria-label="Project list">
         <div className="container-x">
           <ProjectsBrowser projects={projects} categories={categories} />
         </div>
       </section>
 
-      <section className="border-t border-obsidian/10 bg-linen py-20 sm:py-24" aria-labelledby="growing">
+      <section className="border-t border-obsidian/10 bg-linen py-14 sm:py-24" aria-labelledby="growing">
         <div className="container-x grid gap-10 lg:grid-cols-12 lg:items-end">
           <Reveal className="lg:col-span-7">
             <p className="eyebrow text-obsidian/50">A growing portfolio</p>

@@ -131,7 +131,7 @@ export function Parallax({
         {children}
       </motion.div>
       {tag && (
-        <span className="eyebrow absolute bottom-3 left-3 z-10 bg-obsidian/65 px-2 py-1 !text-[0.56rem] !tracking-[0.18em] text-bone/80">
+        <span className="eyebrow absolute bottom-3 left-3 z-10 bg-obsidian/65 px-2 py-1 !text-[0.66rem] !tracking-[0.18em] text-bone/80">
           {tag}
         </span>
       )}

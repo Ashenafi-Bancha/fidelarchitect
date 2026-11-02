@@ -21,7 +21,7 @@ export function DivisionShowcase() {
   const current = divisions[active];
 
   return (
-    <section className="relative bg-linen py-24 sm:py-36" aria-labelledby="divisions-title">
+    <section className="relative bg-linen py-16 sm:py-36" aria-labelledby="divisions-title">
       <div className="container-x">
         <div className="grid-12 gap-y-8">
           <div className="col-span-12 lg:col-span-8">
@@ -111,7 +111,7 @@ export function DivisionShowcase() {
                     <div className="absolute bottom-5 right-5 w-40 border border-bone/20 shadow-2xl xl:w-48">
                       <Schematic variant={current.visuals[0]} accent={current.color} tone="dark" className="aspect-square w-full" label={false} />
                     </div>
-                    <p className="eyebrow absolute bottom-5 left-5 bg-obsidian/65 px-2 py-1 !text-[0.56rem] text-bone/80">Reference image</p>
+                    <p className="eyebrow absolute bottom-5 left-5 bg-obsidian/65 px-2 py-1 !text-[0.66rem] text-bone/80">Reference image</p>
                   </motion.div>
                 </AnimatePresence>
                 <div className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between p-6 text-bone">

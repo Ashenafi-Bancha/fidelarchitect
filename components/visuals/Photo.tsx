@@ -40,7 +40,7 @@ export function Photo({
       {image.reference && tagPosition !== "none" && (
         <figcaption
           className={cn(
-            "eyebrow absolute z-10 bg-obsidian/65 px-2 py-1 !text-[0.56rem] !tracking-[0.18em] text-bone/80 backdrop-blur-[2px]",
+            "eyebrow absolute z-10 max-w-[calc(100%-1.5rem)] truncate whitespace-nowrap bg-obsidian/65 px-2 py-1 !text-[0.66rem] !tracking-[0.14em] text-bone/80 backdrop-blur-[2px]",
             tagPosition === "bottom-left" ? "bottom-3 left-3" : "right-3 top-3",
           )}
         >

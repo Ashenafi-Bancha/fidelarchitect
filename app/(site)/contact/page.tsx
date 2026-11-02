@@ -44,14 +44,14 @@ export default function ContactPage() {
 
       <section className="bg-bone" aria-label="Inquiry form and contact details">
         <div className="grid lg:grid-cols-12">
-          <div className="container-x py-20 sm:py-28 lg:col-span-7 lg:mx-0 lg:max-w-none lg:pr-16">
+          <div className="container-x py-14 sm:py-28 lg:col-span-7 lg:mx-0 lg:max-w-none lg:pr-16">
             <SectionLabel>Project inquiry</SectionLabel>
             <h2 className="display-md mt-8 mb-14">A consultation request, not a questionnaire.</h2>
             <InquiryForm />
           </div>
 
           <aside className="grain bg-obsidian text-bone lg:col-span-5">
-            <div className="px-[var(--gutter)] py-20 sm:py-28 lg:sticky lg:top-[var(--header-h)] lg:px-14">
+            <div className="px-[var(--gutter)] py-14 sm:py-28 lg:sticky lg:top-[var(--header-h)] lg:px-14">
               <SectionLabel className="text-bone/50">Reach us directly</SectionLabel>
               <ul className="mt-8 border-t border-bone/10">
                 {tel && (
@@ -75,9 +75,9 @@ export default function ContactPage() {
                   {site.location.address && <p className="text-lg">{site.location.address}</p>}
                   <ul className="space-y-2">
                     {site.location.offices.map((o) => (
-                      <li key={o} className="flex flex-wrap items-baseline justify-between gap-x-4">
+                      <li key={o} className="flex flex-wrap items-center justify-between gap-x-4">
                         <span className="text-lg">{o}</span>
-                        <a href={mapsDirectionsUrl(o)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm text-bone/60 hover:text-bone">
+                        <a href={mapsDirectionsUrl(o)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 rounded-full border border-bone/15 px-4 text-sm text-bone/70 hover:text-bone">
                           Map <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                         </a>
                       </li>

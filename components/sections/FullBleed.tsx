@@ -27,7 +27,7 @@ export function FullBleed({ image, children, caption }: { image: SiteImage; chil
         <div className="absolute inset-0 bg-gradient-to-t from-obsidian/75 via-obsidian/10 to-obsidian/20" />
         {children && <div className="container-x absolute inset-x-0 bottom-0 pb-14 text-bone sm:pb-20">{children}</div>}
         {image.reference && (
-          <p className="eyebrow absolute right-4 top-4 bg-obsidian/60 px-2 py-1 !text-[0.56rem] text-bone/80 sm:right-8 sm:top-8">Reference image</p>
+          <p className="eyebrow absolute right-4 top-4 bg-obsidian/60 px-2 py-1 !text-[0.66rem] text-bone/80 sm:right-8 sm:top-8">Reference image</p>
         )}
       </motion.div>
     </section>

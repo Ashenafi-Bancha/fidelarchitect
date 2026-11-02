@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useId, useRef, useState } from "react";
-import { ChevronDown, ArrowRight, Phone, MessageCircle } from "lucide-react";
+import { ChevronDown, ChevronRight, ArrowRight, Phone, MessageCircle, Home, Info, Layers, LayoutGrid, Briefcase, Mail, type LucideIcon } from "lucide-react";
 import { Logo, DivisionMark } from "@/components/brand/Logo";
 import { divisions } from "@/content/divisions";
 import { nav, telUrl, whatsappUrl } from "@/content/site";
@@ -97,6 +97,113 @@ function DivisionsMenu({ onLight, pathname }: { onLight: boolean; pathname: stri
         )}
       </AnimatePresence>
     </li>
+  );
+}
+
+const navIcons: Record<string, LucideIcon> = {
+  "/": Home,
+  "/about": Info,
+  "/divisions": Layers,
+  "/projects": LayoutGrid,
+  "/services": Briefcase,
+  "/contact": Mail,
+};
+
+/** Phone menu: compact rows with icons; Divisions opens as a dropdown. */
+function MobileNav({ pathname }: { pathname: string }) {
+  const [open, setOpen] = useState(pathname.startsWith("/divisions"));
+  const rowCls = (active: boolean) =>
+    cn(
+      "flex w-full items-center gap-4 rounded-xl px-3 py-3.5 text-[1.0625rem] font-medium transition-colors",
+      active ? "bg-bone/[0.08] text-bone" : "text-bone/80 hover:bg-bone/[0.05] active:bg-bone/[0.08]",
+    );
+  const iconCls = (active: boolean) =>
+    cn("grid h-9 w-9 shrink-0 place-items-center rounded-lg border", active ? "border-champagne/50 text-champagne-soft" : "border-bone/10 text-bone/70");
+
+  return (
+    <nav aria-label="Mobile" className="container-x flex-1 py-5">
+      <ul className="space-y-1">
+        {nav.map((item, i) => {
+          const Icon = navIcons[item.href] ?? Home;
+          const active = isActive(pathname, item.href);
+          return (
+            <motion.li
+              key={item.href}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 + i * 0.04, duration: 0.45, ease }}
+            >
+              {"children" in item ? (
+                <>
+                  <button
+                    type="button"
+                    className={rowCls(active)}
+                    aria-expanded={open}
+                    aria-controls="mobile-divisions"
+                    onClick={() => setOpen((o) => !o)}
+                  >
+                    <span className={iconCls(active)}>
+                      <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+                    </span>
+                    <span className="flex-1 text-left">{item.label}</span>
+                    <ChevronDown className={cn("h-5 w-5 text-bone/50 transition-transform duration-300", open && "rotate-180")} aria-hidden="true" />
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {open && (
+                      <motion.ul
+                        id="mobile-divisions"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.35, ease }}
+                        className="ml-[1.6rem] overflow-hidden border-l border-bone/10 pl-4"
+                      >
+                        {divisions.map((d) => {
+                          const sub = isActive(pathname, `/divisions/${d.slug}`);
+                          return (
+                            <li key={d.slug}>
+                              <Link
+                                href={`/divisions/${d.slug}`}
+                                aria-current={sub ? "page" : undefined}
+                                className={cn(
+                                  "flex items-center gap-3 rounded-lg px-2 py-2.5 text-[0.95rem]",
+                                  sub ? "bg-bone/[0.08] text-bone" : "text-bone/70 active:bg-bone/[0.06]",
+                                )}
+                              >
+                                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-bone">
+                                  <DivisionMark division={d.slug} className="h-6 w-6 text-obsidian" />
+                                </span>
+                                <span className="min-w-0 flex-1">
+                                  <span className="block truncate">{d.shortName}</span>
+                                  <span className="block truncate text-xs text-bone/45">{d.slogan}</span>
+                                </span>
+                              </Link>
+                            </li>
+                          );
+                        })}
+                        <li>
+                          <Link href="/divisions" className="flex items-center gap-2 px-2 py-2.5 text-sm text-champagne-soft">
+                            All divisions <ChevronRight className="h-4 w-4" aria-hidden="true" />
+                          </Link>
+                        </li>
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </>
+              ) : (
+                <Link href={item.href} className={rowCls(active)} aria-current={active ? "page" : undefined}>
+                  <span className={iconCls(active)}>
+                    <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+                  </span>
+                  <span className="flex-1">{item.label}</span>
+                  <ChevronRight className="h-4 w-4 text-bone/30" aria-hidden="true" />
+                </Link>
+              )}
+            </motion.li>
+          );
+        })}
+      </ul>
+    </nav>
   );
 }
 
@@ -213,48 +320,15 @@ export function Header() {
             exit={{ clipPath: "inset(0 0 100% 0)" }}
             transition={{ duration: 0.7, ease: [0.65, 0, 0.35, 1] }}
           >
-            <nav aria-label="Mobile" className="container-x flex-1 py-8">
-              <ul className="space-y-1">
-                {nav.map((item, i) => (
-                  <motion.li
-                    key={item.href}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 + i * 0.05, duration: 0.6, ease }}
-                    className="border-b border-bone/10"
-                  >
-                    <Link
-                      href={item.href}
-                      className={cn("flex items-baseline justify-between py-4 font-display text-4xl font-semibold uppercase tracking-tight", isActive(pathname, item.href) && "text-champagne-soft")}
-                      aria-current={isActive(pathname, item.href) ? "page" : undefined}
-                    >
-                      {item.label}
-                      <span className="eyebrow text-bone/40" aria-hidden="true">0{i + 1}</span>
-                    </Link>
-                    {"children" in item && (
-                      <ul className="mb-4 space-y-2 pl-1">
-                        {divisions.map((d) => (
-                          <li key={d.slug}>
-                            <Link href={`/divisions/${d.slug}`} className="flex items-center gap-3 py-1.5 text-sm text-bone/70">
-                              <DivisionMark division={d.slug} className="h-5 w-5 text-bone" />
-                              {d.shortName}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </motion.li>
-                ))}
-              </ul>
-            </nav>
-            <div className="container-x grid gap-3 border-t border-bone/10 py-6">
-              <Link href="/contact" className={buttonClass("light", "lg")}>
+            <MobileNav pathname={pathname} />
+            <div className="container-x grid gap-3 border-t border-bone/10 py-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
+              <Link href="/contact" className={buttonClass("light", "md", "h-12")}>
                 Start a Project <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
               {(tel || wa) && (
-                <div className="grid grid-cols-2 gap-3">
+                <div className={cn("grid gap-3", tel && wa ? "grid-cols-2" : "grid-cols-1")}>
                   {tel && (
-                    <a href={tel} className={buttonClass("outline-light", "md")}>
+                    <a href={tel} className={buttonClass("outline-light", "md", "h-12")}>
                       Call <Phone className="h-4 w-4" aria-hidden="true" />
                     </a>
                   )}

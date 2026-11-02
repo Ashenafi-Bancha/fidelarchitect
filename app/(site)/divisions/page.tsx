@@ -29,7 +29,7 @@ export default function DivisionsPage() {
 
       <div className="bg-bone">
         {divisions.map((d, i) => (
-          <section key={d.slug} className="border-b border-obsidian/10 py-20 sm:py-28" aria-labelledby={`d-${d.slug}`}>
+          <section key={d.slug} className="border-b border-obsidian/10 py-14 sm:py-28" aria-labelledby={`d-${d.slug}`}>
             <div className="container-x grid items-center gap-12 lg:grid-cols-12">
               <div className={cn("lg:col-span-6", i % 2 === 1 && "lg:order-2 lg:col-start-7")}>
                 <div className="relative">

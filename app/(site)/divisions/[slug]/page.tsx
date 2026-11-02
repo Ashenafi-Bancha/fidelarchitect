@@ -101,7 +101,7 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
       </PageHero>
 
       {/* 1. What does Fidelity offer? */}
-      <section className="bg-bone py-24 sm:py-32" aria-labelledby="offer">
+      <section className="bg-bone py-16 sm:py-32" aria-labelledby="offer">
         <div className="container-x grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
@@ -187,7 +187,7 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
       </FullBleed>
 
       {d.slug === "architecture" && (
-        <section className="bg-bone py-24 sm:py-32" aria-labelledby="drawing-to-building">
+        <section className="bg-bone py-16 sm:py-32" aria-labelledby="drawing-to-building">
           <div className="container-x">
             <SectionLabel>From drawing to building</SectionLabel>
             <RevealLines id="drawing-to-building" className="display-lg mb-14 mt-8" lines={["Every line", <span key="2" className="text-stone">has a purpose.</span>]} />
@@ -218,7 +218,7 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
       {d.slug === "branding" && <BrandApplications />}
 
       {/* 4. How does the engagement work? */}
-      <section className="bg-bone py-24 sm:py-32" aria-labelledby="process">
+      <section className="bg-bone py-16 sm:py-32" aria-labelledby="process">
         <div className="container-x">
           <SectionLabel index="03">How we work</SectionLabel>
           <RevealLines id="process" as="h2" className="display-lg mb-14 mt-8" lines={["From first call", "to final detail."]} />
@@ -227,7 +227,7 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
       </section>
 
       {related.length > 0 && (
-        <section id="work" className="scroll-mt-[var(--header-h)] bg-linen py-24 sm:py-32" aria-labelledby="related">
+        <section id="work" className="scroll-mt-[var(--header-h)] bg-linen py-16 sm:py-32" aria-labelledby="related">
           <div className="container-x">
             <SectionLabel index="04">Related work</SectionLabel>
             <h2 id="related" className="display-md mb-12 mt-8">
@@ -243,7 +243,7 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
       )}
 
       {/* 5. How to get started */}
-      <section id="inquiry" className="scroll-mt-[var(--header-h)] bg-bone py-24 sm:py-32" aria-labelledby="faq">
+      <section id="inquiry" className="scroll-mt-[var(--header-h)] bg-bone py-16 sm:py-32" aria-labelledby="faq">
         <div className="container-x grid gap-20 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionLabel index="05">Questions</SectionLabel>

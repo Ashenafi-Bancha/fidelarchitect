@@ -225,3 +225,20 @@ html.lenis, html.lenis body { height: auto; }
 }
 .draw-ready.is-drawn [data-draw] { stroke-dashoffset: 0; }
 .draw-ready.is-drawn [data-fill] { opacity: 1; }
+
+/* Phones & tablets: comfortable tap targets for text links (WCAG ~44px) */
+@media (max-width: 1023px) {
+  main a.group.inline-flex,
+  main a.link-line,
+  footer li > a,
+  footer nav a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  main a.eyebrow {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
