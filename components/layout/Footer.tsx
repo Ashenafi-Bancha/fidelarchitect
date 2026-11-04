@@ -161,7 +161,10 @@ export function Footer() {
       </div>
 
       <div className="container-x flex flex-col gap-3 border-t border-bone/10 py-6 text-xs text-bone/45 sm:flex-row sm:items-center sm:justify-between">
-        <p>© {year} {site.name}. All rights reserved.</p>
+        <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-6">
+          <p>© {year} {site.name}. All rights reserved.</p>
+          {site.credit && <p className="text-bone/35">Website concept by {site.credit}</p>}
+        </div>
         <div className="flex gap-6">
           <Link href="/privacy" className="link-line inline-flex min-h-11 items-center hover:text-bone lg:min-h-0">Privacy Policy</Link>
           <span>{locationLabel}</span>

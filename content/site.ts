@@ -12,6 +12,12 @@
 
 const env = (v: string | undefined) => (v && v.trim().length > 0 ? v.trim() : null);
 
+/**
+ * Preview mode: until the owner approves the site, it is hidden from search
+ * engines. Set NEXT_PUBLIC_SITE_LIVE=true at deploy time to go public.
+ */
+export const isLive = process.env.NEXT_PUBLIC_SITE_LIVE === "true";
+
 export const site = {
   name: "Fidelity Business Group",
   shortName: "Fidelity",
@@ -44,6 +50,8 @@ export const site = {
     { label: "LinkedIn", detail: "", href: env(process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN) },
     { label: "Telegram", detail: "t.me/FidelityEmpire", href: env(process.env.NEXT_PUBLIC_SOCIAL_TELEGRAM) ?? "https://t.me/FidelityEmpire" },
   ].filter((s): s is { label: string; detail: string; href: string } => Boolean(s.href)),
+  /** Footer credit for the website's designer/developer (set NEXT_PUBLIC_CREDIT_NAME="" to hide). */
+  credit: process.env.NEXT_PUBLIC_CREDIT_NAME ?? "Ashenafi Bancha",
   founder: {
     name: "Fidel Gebremedhin",
     title: "Founder & CEO",

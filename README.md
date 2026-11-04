@@ -15,13 +15,18 @@ Corporate website for Fidelity Business Group (Addis Ababa and Wolaita Sodo, Eth
 ## Motion & experience
 - **Smooth scrolling** with Lenis: eased wheel scrolling on desktop. Native scroll is kept, so there is no scroll-jacking, and it is off for touch and reduced motion.
 - **Brand intro**: the two halves of the mark join together, shown once per session (about 1.6s, can be skipped).
-- **Page transitions**: a dark panel lifts off on navigation (`app/(site)/template.tsx`).
+- **Page transitions**: on any internal link, a dark panel with the Fidelity mark slides up, the next page loads underneath, then the panel lifts away (`components/providers/PageTransition.tsx`). It's timer-driven, so navigation always completes.
+- **Header**: hides while scrolling down, returns on scroll up, with a champagne reading-progress line.
+- **Image loading**: every image shows a tiny blurred preview first (`content/blur.ts`). After adding images, run `python scripts/make-blur.py`.
 - **Self-drawing drawings**: schematic plans, sections and elevations plot themselves as they scroll in (`components/visuals/DrawOnView.tsx`).
 - **Cursor companion**: on desktop, a ring that labels project cards ("View") and divisions ("Explore").
 - **Materials & Craft**: a procedurally rendered sample board of oak, walnut, travertine, terrazzo, linen, brass, steel and velvet (`components/visuals/Material.tsx`).
 - **Identity in Use**: a parallax collage of the Fidelity identity on stationery, a site hoarding and a roll-up banner.
 - **Mobile**: a labelled three-line **Menu** button, a full-screen menu, and a floating Call / Start a Project bar that appears after the hero.
 - **Social icons**: official platform marks in brand colours (`components/brand/SocialIcon.tsx`).
+
+## Preview vs. launch
+While the owner is reviewing, the site stays **hidden from search engines**: `robots.txt` blocks everything, and every page sends a `noindex` header and meta tag. To launch publicly, set `NEXT_PUBLIC_SITE_LIVE=true` and `NEXT_PUBLIC_SITE_URL` to the real domain. The footer credit comes from `NEXT_PUBLIC_CREDIT_NAME`; set it to an empty value to remove it.
 
 ## Getting started
 ```bash

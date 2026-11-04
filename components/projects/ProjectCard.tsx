@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { blurProps } from "@/content/blur";
 import Link from "next/link";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
@@ -48,6 +49,7 @@ export function ProjectCard({
               <Image
                 src={cover.src}
                 alt={cover.alt}
+                {...blurProps(cover.src)}
                 fill
                 sizes={size === "lg" ? "(min-width: 1024px) 66vw, 100vw" : "(min-width: 1024px) 33vw, 100vw"}
                 className="object-cover"

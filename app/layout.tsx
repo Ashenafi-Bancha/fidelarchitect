@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight, Instrument_Serif } from "next/font/google";
 import Script from "next/script";
 import { MotionProvider } from "@/components/providers/MotionProvider";
-import { site } from "@/content/site";
+import { isLive, site } from "@/content/site";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   applicationName: site.name,
   openGraph: { siteName: site.name, type: "website", locale: "en_US" },
   twitter: { card: "summary_large_image" },
+  ...(isLive ? {} : { robots: { index: false, follow: false } }),
   ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
     ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }
     : {}),

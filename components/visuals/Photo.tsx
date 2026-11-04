@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { blurProps } from "@/content/blur";
 import type { SiteImage } from "@/content/imagery";
 import { cn } from "@/lib/cn";
 
@@ -28,6 +29,7 @@ export function Photo({
       <Image
         src={image.src}
         alt={image.alt}
+        {...blurProps(image.src)}
         fill={fill}
         sizes={sizes}
         priority={priority}

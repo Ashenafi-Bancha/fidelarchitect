@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { useEffect, useId, useRef, useState } from "react";
 import { ChevronDown, ChevronRight, ArrowRight, Phone, MessageCircle, Home, Info, Layers, LayoutGrid, Briefcase, Mail, type LucideIcon } from "lucide-react";
 import { Logo, DivisionMark } from "@/components/brand/Logo";
@@ -210,14 +210,28 @@ function MobileNav({ pathname }: { pathname: string }) {
 export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [menu, setMenu] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 40, mass: 0.3 });
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 40);
+      // tuck the header away while reading down the page; bring it back on any upward scroll
+      if (Math.abs(y - last) > 6) {
+        setHidden(y > last && y > 320);
+        last = y;
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => setHidden(false), [pathname]);
 
   useEffect(() => setMenu(false), [pathname]);
   useEffect(() => {
@@ -238,11 +252,19 @@ export function Header() {
         Skip to content
       </a>
       <header
+        onFocusCapture={() => setHidden(false)}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-[background-color,color,border-color] duration-500",
+          "fixed inset-x-0 top-0 z-50 transition-[background-color,color,border-color,transform] duration-500 ease-[var(--ease-out-expo)]",
           onLight ? "border-b border-obsidian/10 bg-bone/95 text-obsidian backdrop-blur-sm" : "border-b border-transparent text-bone",
+          hidden && !menu && "-translate-y-full",
         )}
       >
+        {/* reading progress */}
+        <motion.span
+          aria-hidden="true"
+          className={cn("absolute inset-x-0 bottom-[-1px] h-[2px] origin-left bg-champagne transition-opacity duration-500", scrolled && !menu ? "opacity-100" : "opacity-0")}
+          style={{ scaleX: progress }}
+        />
         <div className="container-x flex h-[var(--header-h)] items-center justify-between gap-6">
           <Logo tone={onLight ? "dark" : "light"} />
           <nav aria-label="Primary" className="hidden lg:block">

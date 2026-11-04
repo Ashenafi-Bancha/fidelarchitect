@@ -6,6 +6,7 @@ import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { BrandIntro } from "@/components/providers/BrandIntro";
 import { Cursor } from "@/components/providers/Cursor";
 import { MobileActionBar } from "@/components/layout/MobileActionBar";
+import { PageTransition } from "@/components/providers/PageTransition";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -18,6 +19,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <main id="main">{children}</main>
       <Footer />
       <MobileActionBar />
+      <PageTransition />
     </>
   );
 }

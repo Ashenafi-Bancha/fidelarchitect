@@ -242,3 +242,8 @@ html.lenis, html.lenis body { height: auto; }
     align-items: center;
   }
 }
+
+@keyframes pt-load {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}

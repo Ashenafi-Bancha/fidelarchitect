@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { blurProps } from "@/content/blur";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Reveal, RevealLines, MaskReveal, Parallax } from "@/components/motion/Reveal";
@@ -78,7 +79,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <MaskReveal onMount className="absolute inset-0">
           <Parallax className="h-full" amount={80}>
             {cover ? (
-              <Image src={cover.src} alt={cover.alt} fill priority sizes="100vw" className="object-cover" />
+              <Image src={cover.src} alt={cover.alt} fill priority sizes="100vw" className="object-cover" {...blurProps(cover.src)} />
             ) : (
               <Schematic variant={p.visual} accent={division.color} tone="dark" className="h-full w-full" title={`${p.title} — schematic illustration, not a project drawing`} label={false} />
             )}
@@ -177,6 +178,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                       <Image
                         src={img.src}
                         alt={img.alt}
+                        {...blurProps(img.src)}
                         fill
                         sizes={wide ? "100vw" : "(min-width:768px) 50vw, 100vw"}
                         className={shown !== ratio ? "object-contain" : "object-cover"}

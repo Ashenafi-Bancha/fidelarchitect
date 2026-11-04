@@ -16,7 +16,14 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [
-      { source: "/:path*", headers: securityHeaders },
+      {
+        source: "/:path*",
+        headers: [
+          ...securityHeaders,
+          // Preview deployments stay out of search engines until NEXT_PUBLIC_SITE_LIVE=true
+          ...(process.env.NEXT_PUBLIC_SITE_LIVE === "true" ? [] : [{ key: "X-Robots-Tag", value: "noindex, nofollow" }]),
+        ],
+      },
       { source: "/admin/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
     ];
   },
